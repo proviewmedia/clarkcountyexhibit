@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Gallery — Melvin Morales</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet"/>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--bg:#111;--card:#1c1c1c;--border:rgba(255,255,255,0.08);--border-h:rgba(255,255,255,0.15);--txt:#f0ede8;--sub:rgba(240,237,232,0.45);--muted:rgba(240,237,232,0.28);--r:14px;--w:600px}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--txt);font-family:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;font-size:14px;line-height:1.5;-webkit-font-smoothing:antialiased;min-height:100vh}
+a{color:inherit;text-decoration:none}
+img{display:block}
+.pg{max-width:var(--w);margin:0 auto;padding:0 16px 100px}
+.back{display:inline-flex;align-items:center;gap:5px;font-size:12.5px;color:var(--sub);padding:8px 0 4px;transition:color .15s}
+.back:hover{color:var(--txt)}
+.hero{display:flex;flex-direction:column;align-items:center;text-align:center;padding:24px 0 20px;gap:8px}
+.av{width:76px;height:76px;border-radius:50%;overflow:hidden;background:#2a2a2a;border:1.5px solid var(--border)}
+.av img{width:100%;height:100%;object-fit:cover}
+.hero h1{font-size:22px;font-weight:600;letter-spacing:-.4px}
+.hero .role{font-size:13px;color:var(--sub)}
+.nav{display:flex;justify-content:center;flex-wrap:wrap;gap:6px;margin-bottom:28px}
+.nav a{padding:7px 16px;border-radius:999px;font-size:12.5px;font-weight:500;color:var(--sub);background:var(--card);border:1px solid var(--border);transition:color .15s,border-color .15s,background .15s}
+.nav a:hover{color:var(--txt);border-color:var(--border-h)}
+.nav a.on{background:var(--txt);color:#111;border-color:transparent}
+.lbl{font-size:11px;font-weight:600;letter-spacing:.09em;text-transform:uppercase;color:var(--muted);margin-bottom:10px}
+.gg{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.gi{display:block;background:var(--card);border:1px solid var(--border);border-radius:12px;overflow:hidden;transition:transform .15s,border-color .15s}
+.gi:hover{transform:scale(1.015);border-color:var(--border-h)}
+.gi img{width:100%;aspect-ratio:1;object-fit:cover;background:#222;min-height:1px}
+.gi .gc{padding:9px 11px 11px}
+.gi .gc strong{display:block;font-size:12.5px;font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.gi .gc span{font-size:11px;color:var(--sub)}
+footer{margin-top:52px;padding-top:28px;border-top:1px solid var(--border);display:flex;flex-direction:column;align-items:center;gap:14px;text-align:center}
+footer .faw{display:flex;flex-direction:column;align-items:center;gap:8px}
+footer .fn{font-size:14px;font-weight:600}
+footer .fs{font-size:12px;color:var(--sub)}
+footer .fl{display:flex;flex-wrap:wrap;justify-content:center;gap:3px 14px;font-size:12.5px;color:var(--sub)}
+footer .fl a:hover{color:var(--txt)}
+footer .fc{font-size:11px;color:var(--muted)}
+@keyframes up{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
+.pg>*{animation:up .32s ease both}
+.pg>*:nth-child(1){animation-delay:.04s}.pg>*:nth-child(2){animation-delay:.08s}.pg>*:nth-child(3){animation-delay:.12s}.pg>*:nth-child(4){animation-delay:.16s}.pg>*:nth-child(5){animation-delay:.20s}
+</style>
+</head>
+<body>
+<div class="pg">
+
+  <a class="back" href="index.html">← Back</a>
+
+  <div class="hero">
+    <div class="av"><img src="assets/portrait.jpg" alt="Melvin Morales" onerror="this.style.display='none'"/></div>
+    <h1>Gallery</h1>
+    <p class="role">Vistas: Beauty of the Desert</p>
+  </div>
+
+  <nav class="nav">
+    <a href="index.html">Home</a>
+    <a href="about.html">About Me</a>
+    <a href="exhibit.html">The Exhibit</a>
+    <a href="gallery.html" class="on">Gallery</a>
+  </nav>
+
+  <p class="lbl">All Photographs</p>
+  <div class="gg" id="grid"></div>
+
+  <footer>
+    <a href="index.html" class="faw">
+      <div class="av" style="width:52px;height:52px"><img src="assets/portrait.jpg" alt="" onerror="this.style.display='none'"/></div>
+      <p class="fn">Melvin Morales</p><p class="fs">Photographer</p>
+    </a>
+    <nav class="fl">
+      <a href="about.html">About</a>
+      <a href="exhibit.html">Exhibit</a>
+      <a href="gallery.html">Gallery</a>
+    </nav>
+    <p class="fc">© 2025 Melvin Morales</p>
+  </footer>
+
+</div>
+<script>
+// ── ADD YOUR PHOTOS HERE ─────────────────────────────
+const photos=[
+  {id:1, title:"Untitled No. 1",  loc:"Mojave Desert, NV",   src:"assets/gallery/photo-01.jpg"},
+  {id:2, title:"Untitled No. 2",  loc:"Valley of Fire, NV",  src:"assets/gallery/photo-02.jpg"},
+  {id:3, title:"Untitled No. 3",  loc:"Red Rock Canyon, NV", src:"assets/gallery/photo-03.jpg"},
+  {id:4, title:"Untitled No. 4",  loc:"Great Basin, NV",     src:"assets/gallery/photo-04.jpg"},
+  {id:5, title:"Untitled No. 5",  loc:"Joshua Tree, CA",     src:"assets/gallery/photo-05.jpg"},
+  {id:6, title:"Untitled No. 6",  loc:"Zion, UT",            src:"assets/gallery/photo-06.jpg"},
+  {id:7, title:"Untitled No. 7",  loc:"Mojave Desert, NV",   src:"assets/gallery/photo-07.jpg"},
+  {id:8, title:"Untitled No. 8",  loc:"Death Valley, CA",    src:"assets/gallery/photo-08.jpg"},
+  {id:9, title:"Untitled No. 9",  loc:"Nevada",              src:"assets/gallery/photo-09.jpg"},
+  {id:10,title:"Untitled No. 10", loc:"Nevada",              src:"assets/gallery/photo-10.jpg"},
+  {id:11,title:"Untitled No. 11", loc:"Nevada",              src:"assets/gallery/photo-11.jpg"},
+  {id:12,title:"Untitled No. 12", loc:"Nevada",              src:"assets/gallery/photo-12.jpg"},
+];
+sessionStorage.setItem('photos',JSON.stringify(photos));
+const g=document.getElementById('grid');
+photos.forEach(p=>{
+  const a=document.createElement('a');
+  a.className='gi';a.href=`photo.html?id=${p.id}`;
+  a.innerHTML=`<img src="${p.src}" alt="${p.title}" onerror="this.style.background='#222';this.style.minHeight='120px';this.removeAttribute('src')"/><div class="gc"><strong>${p.title}</strong><span>${p.loc}</span></div>`;
+  g.appendChild(a);
+});
+</script>
+</body>
+</html>

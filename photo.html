@@ -8,58 +8,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet"/>
-<style>
-*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-:root{--bg:#111;--card:#1c1c1c;--border:rgba(255,255,255,0.08);--border-h:rgba(255,255,255,0.15);--txt:#f0ede8;--sub:rgba(240,237,232,0.45);--muted:rgba(240,237,232,0.28);--r:14px;--w:600px}
-html{scroll-behavior:smooth}
-body{background:var(--bg);color:var(--txt);font-family:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;font-size:14px;line-height:1.5;-webkit-font-smoothing:antialiased;min-height:100vh}
-a{color:inherit;text-decoration:none}
-img{display:block}
-.pg{max-width:var(--w);margin:0 auto;padding:0 16px 40px}
-.hero{display:flex;flex-direction:column;align-items:center;text-align:center;padding:24px 0 20px;gap:8px}
-.hero h1{font-size:22px;font-weight:600;letter-spacing:-.4px}
-.hero .role{font-size:13px;color:var(--sub)}
-.nav{display:flex;justify-content:center;flex-wrap:wrap;gap:6px;margin-bottom:28px}
-.nav a{padding:7px 16px;border-radius:999px;font-size:12.5px;font-weight:500;color:var(--sub);background:var(--card);border:1px solid var(--border);transition:color .15s,border-color .15s,background .15s}
-.nav a:hover{color:var(--txt);border-color:var(--border-h)}
-.nav a.on{background:var(--txt);color:#111;border-color:transparent}
-.dim{width:100%;border-radius:var(--r);background:#1e1e1e;display:block}
-.meta{margin-top:14px}
-.meta h2{font-size:18px;font-weight:600;letter-spacing:-.3px}
-.meta p{font-size:13px;color:var(--sub);margin-top:3px}
-.pnav{display:flex;align-items:center;justify-content:space-between;margin-top:14px}
-.pb{display:inline-flex;align-items:center;gap:4px;font-size:12px;font-weight:500;color:var(--sub);background:var(--card);border:1px solid var(--border);border-radius:999px;padding:7px 16px;transition:all .15s}
-.pb:hover{color:var(--txt);border-color:var(--border-h)}
-.pb.off{opacity:.25;pointer-events:none}
-.pc{font-size:11px;color:var(--muted)}
-.div{border:none;border-top:1px solid var(--border);margin:22px 0}
-.lbl{font-size:11px;font-weight:600;letter-spacing:.09em;text-transform:uppercase;color:var(--muted);margin-bottom:14px}
-.gg{display:grid;grid-template-columns:1fr 1fr;gap:8px}
-.gi{display:block;background:var(--card);border:1px solid var(--border);border-radius:12px;overflow:hidden;transition:transform .15s,border-color .15s}
-.gi:hover{transform:scale(1.015);border-color:var(--border-h)}
-.gi img{width:100%;aspect-ratio:1;object-fit:cover;background:#222;min-height:1px}
-.gi .gc{padding:9px 11px 11px}
-.gi .gc strong{display:block;font-size:12.5px;font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.rc{display:flex;align-items:center;gap:12px;background:var(--card);border:1px solid var(--border);border-radius:var(--r);padding:12px 14px;margin-bottom:8px;transition:border-color .15s,transform .15s}
-.rc:hover{border-color:var(--border-h);transform:translateY(-1px)}
-.rc .ico{width:38px;height:38px;border-radius:10px;background:#262626;overflow:hidden;flex-shrink:0;display:flex;align-items:center;justify-content:center}
-.rc .rt{flex:1;min-width:0}
-.rc .rt strong{display:block;font-size:13.5px;font-weight:600}
-.rc .rt span{font-size:12px;color:var(--sub)}
-.rc .arr{font-size:11px;color:var(--muted);flex-shrink:0}
-footer{margin-top:28px;padding-top:28px;border-top:1px solid var(--border);display:flex;flex-direction:column;align-items:center;gap:14px;text-align:center}
-footer .faw{display:flex;flex-direction:column;align-items:center;gap:8px}
-.av{width:52px;height:52px;border-radius:50%;overflow:hidden;background:#2a2a2a;border:1.5px solid var(--border)}
-.av img{width:100%;height:100%;object-fit:cover}
-footer .fn{font-size:14px;font-weight:600}
-footer .fs{font-size:12px;color:var(--sub)}
-footer .fl{display:flex;flex-wrap:wrap;justify-content:center;gap:3px 14px;font-size:12.5px;color:var(--sub)}
-footer .fl a:hover{color:var(--txt)}
-footer .fc{font-size:11px;color:var(--muted)}
-@keyframes up{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
-.pg>*{animation:up .32s ease both}
-.pg>*:nth-child(1){animation-delay:.04s}.pg>*:nth-child(2){animation-delay:.08s}.pg>*:nth-child(3){animation-delay:.12s}.pg>*:nth-child(4){animation-delay:.16s}.pg>*:nth-child(5){animation-delay:.20s}.pg>*:nth-child(6){animation-delay:.24s}.pg>*:nth-child(7){animation-delay:.28s}
-</style>
+<link rel="stylesheet" href="styles.css"/>
 </head>
 <body>
 <div class="pg">
@@ -79,7 +28,11 @@ footer .fc{font-size:11px;color:var(--muted)}
     <a href="gallery.html">Gallery</a>
   </nav>
 
+  <div class="photo-layout">
+  <div class="photo-main">
   <img id="img" class="dim" src="" alt="" onerror="this.style.minHeight='280px';this.style.background='#1e1e1e';this.removeAttribute('src')"/>
+  </div>
+  <div class="photo-sidebar">
   <div class="meta"><h2 id="ttl"></h2><p id="loc"></p></div>
   <div class="pnav">
     <a class="pb off" id="prev" href="#">← Prev</a>
@@ -104,6 +57,8 @@ footer .fc{font-size:11px;color:var(--muted)}
     <div class="rt"><strong>Shop This Print</strong><span>proviewmedia.darkroom.com</span></div>
     <span class="arr">↗</span>
   </a>
+  </div>
+  </div>
   <hr class="div"/>
   <p class="lbl">More Photos</p>
   <div class="gg" id="more"></div>

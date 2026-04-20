@@ -24,61 +24,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet"/>
-<style>
-*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-:root{--bg:#111;--card:#1c1c1c;--border:rgba(255,255,255,0.08);--border-h:rgba(255,255,255,0.15);--txt:#f0ede8;--sub:rgba(240,237,232,0.45);--muted:rgba(240,237,232,0.28);--r:14px;--w:600px}
-html{scroll-behavior:smooth}
-body{background:var(--bg);color:var(--txt);font-family:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;font-size:14px;line-height:1.5;-webkit-font-smoothing:antialiased;min-height:100vh}
-a{color:inherit;text-decoration:none}
-img{display:block}
-.pg{max-width:var(--w);margin:0 auto;padding:0 16px 40px}
-.back{display:inline-flex;align-items:center;gap:5px;font-size:12.5px;color:var(--sub);padding:8px 0 4px;transition:color .15s}
-.back:hover{color:var(--txt)}
-.hero{display:flex;flex-direction:column;align-items:center;text-align:center;padding:24px 0 20px;gap:8px}
-.av{width:76px;height:76px;border-radius:50%;overflow:hidden;background:#2a2a2a;border:1.5px solid var(--border)}
-.av img{width:100%;height:100%;object-fit:cover}
-.hero h1{font-size:22px;font-weight:600;letter-spacing:-.4px}
-.hero .role{font-size:13px;color:var(--sub)}
-.nav{display:flex;justify-content:center;flex-wrap:wrap;gap:6px;margin-bottom:28px}
-.nav a{padding:7px 16px;border-radius:999px;font-size:12.5px;font-weight:500;color:var(--sub);background:var(--card);border:1px solid var(--border);transition:color .15s,border-color .15s,background .15s}
-.nav a:hover{color:var(--txt);border-color:var(--border-h)}
-.nav a.on{background:var(--txt);color:#111;border-color:transparent}
-.ic{display:block;background:var(--card);border:1px solid var(--border);border-radius:var(--r);overflow:hidden;margin-bottom:12px;transition:border-color .15s,transform .15s}
-.ic:hover{border-color:var(--border-h);transform:translateY(-1px)}
-.ic .cimg{width:100%;aspect-ratio:16/9;object-fit:cover;background:#222;display:block;min-height:1px}
-.ic .ci{padding:16px 16px 20px}
-.ic .ci .ey{font-size:11px;color:var(--muted);font-weight:500;margin-bottom:3px}
-.ic .ci .ct{font-size:15px;font-weight:600;letter-spacing:-.2px;line-height:1.3}
-.ic .ci .cs{font-size:12.5px;color:var(--sub);margin-top:3px}
-.ic .ci .tag{display:inline-block;margin-top:9px;font-size:11.5px;font-weight:600;background:var(--txt);color:#111;padding:3px 10px;border-radius:6px}
-.rc{display:flex;align-items:center;gap:12px;background:var(--card);border:1px solid var(--border);border-radius:var(--r);padding:12px 14px;margin-bottom:8px;transition:border-color .15s,transform .15s}
-.rc:hover{border-color:var(--border-h);transform:translateY(-1px)}
-.rc .ico{width:38px;height:38px;border-radius:10px;background:#262626;overflow:hidden;flex-shrink:0;display:flex;align-items:center;justify-content:center}
-.rc .rt{flex:1;min-width:0}
-.rc .rt strong{display:block;font-size:13.5px;font-weight:600}
-.rc .rt span{font-size:12px;color:var(--sub)}
-.rc .arr{font-size:11px;color:var(--muted);flex-shrink:0}
-.lbl{font-size:11px;font-weight:600;letter-spacing:.09em;text-transform:uppercase;color:var(--muted);margin-bottom:14px}
-.div{border:none;border-top:1px solid var(--border);margin:22px 0}
-.prose{color:rgba(240,237,232,.7);font-size:14px;line-height:1.78}
-.prose h2{font-size:18px;font-weight:600;color:var(--txt);letter-spacing:-.3px;margin:24px 0 10px}
-.prose p{margin-bottom:14px}
-.prose ul{list-style:none;margin-bottom:14px}
-.prose ul li{padding:6px 0;border-bottom:1px solid rgba(255,255,255,0.06);font-size:14px}
-.prose ul li:last-child{border-bottom:none}
-.prose ul li strong{color:var(--txt);font-weight:600}
-.prose ul li a{color:var(--txt);text-decoration:underline;text-underline-offset:3px}
-footer{margin-top:28px;padding-top:28px;border-top:1px solid var(--border);display:flex;flex-direction:column;align-items:center;gap:14px;text-align:center}
-footer .faw{display:flex;flex-direction:column;align-items:center;gap:8px}
-footer .fn{font-size:14px;font-weight:600}
-footer .fs{font-size:12px;color:var(--sub)}
-footer .fl{display:flex;flex-wrap:wrap;justify-content:center;gap:3px 14px;font-size:12.5px;color:var(--sub)}
-footer .fl a:hover{color:var(--txt)}
-footer .fc{font-size:11px;color:var(--muted)}
-@keyframes up{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
-.pg>*{animation:up .32s ease both}
-.pg>*:nth-child(1){animation-delay:.04s}.pg>*:nth-child(2){animation-delay:.08s}.pg>*:nth-child(3){animation-delay:.12s}.pg>*:nth-child(4){animation-delay:.16s}.pg>*:nth-child(5){animation-delay:.20s}.pg>*:nth-child(6){animation-delay:.24s}.pg>*:nth-child(7){animation-delay:.28s}.pg>*:nth-child(8){animation-delay:.32s}
-</style>
+<link rel="stylesheet" href="styles.css"/>
 </head>
 <body>
 <div class="pg">
@@ -129,7 +75,9 @@ footer .fc{font-size:11px;color:var(--muted)}
 
   <hr class="div"/>
 
+  <div class="exhibit-venue-reception">
   <!-- VENUE -->
+  <div>
   <p class="lbl">Venue & Hours</p>
   <a class="ic" href="https://www.google.com/maps/search/?api=1&query=6301+W+Charleston+Blvd+Las+Vegas+NV+89146" target="_blank">
     <div class="ci" style="padding:16px 15px 18px">
@@ -140,10 +88,10 @@ footer .fc{font-size:11px;color:var(--muted)}
       <span class="tag" style="margin-top:12px">Get Directions</span>
     </div>
   </a>
-
-  <hr class="div"/>
+  </div>
 
   <!-- OPENING RECEPTION -->
+  <div>
   <p class="lbl">Opening Reception</p>
   <a class="ic" href="https://www.google.com/maps/search/?api=1&query=6301+W+Charleston+Blvd+Las+Vegas+NV+89146" target="_blank">
     <div class="ci" style="padding:16px 15px 18px">
@@ -154,6 +102,8 @@ footer .fc{font-size:11px;color:var(--muted)}
       <span class="tag" style="margin-top:12px">Get Directions</span>
     </div>
   </a>
+  </div>
+  </div>
 
   <hr class="div"/>
 
@@ -183,6 +133,7 @@ footer .fc{font-size:11px;color:var(--muted)}
 
   <!-- CONTACT -->
   <p class="lbl">Contact</p>
+  <div class="exhibit-contact">
   <a class="rc" href="mailto:johnsond@lvccld.org">
     <div class="ico">
       <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="rgba(240,237,232,.5)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
@@ -198,11 +149,13 @@ footer .fc{font-size:11px;color:var(--muted)}
     <div class="rt"><strong>(702) 507-6222</strong><span>Las Vegas-Clark County Library District</span></div>
     <span class="arr">↗</span>
   </a>
+  </div>
 
   <hr class="div"/>
 
   <!-- LINKS -->
   <p class="lbl">Links</p>
+  <div class="exhibit-links">
   <a class="rc" href="gallery.html">
     <div class="ico">
       <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="rgba(240,237,232,.5)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
@@ -226,6 +179,7 @@ footer .fc{font-size:11px;color:var(--muted)}
     <div class="rt"><strong>Shop Prints</strong><span>proviewmedia.darkroom.com</span></div>
     <span class="arr">↗</span>
   </a>
+  </div>
 
   <footer>
     <a href="index.html" class="faw">

@@ -168,14 +168,21 @@ footer .fc{font-size:11px;color:var(--muted)}
   .gg { grid-template-columns: 1fr 1fr 1fr; gap: 12px; }
   .gg .gi:first-child { grid-column: span 2; grid-row: span 2; }
 
+  /* Gallery featured item */
+  .gg .gi:first-child .gc { padding: 14px 16px 16px; }
+  .gg .gi:first-child .gc strong { font-size: 16px; }
+  .gg .gi:first-child .gc span { font-size: 13px; }
+
   /* Home page grids */
-  .home-about { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+  .home-about { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; align-items: start; }
   .home-about .rc { grid-column: 1 / -1; }
   .home-exhibit { display: grid; grid-template-columns: 2fr 1fr; gap: 12px; align-items: start; }
   .home-links { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
 
   /* Exhibit page grids */
-  .exhibit-venue-reception { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+  .exhibit-venue-reception { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; align-items: stretch; }
+  .exhibit-venue-reception > div { display: flex; flex-direction: column; }
+  .exhibit-venue-reception .ic { flex: 1; }
   .exhibit-contact { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
   .exhibit-links { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 8px; }
 
@@ -191,7 +198,9 @@ footer .fc{font-size:11px;color:var(--muted)}
 
   /* Media kit grids */
   .media-top { display: grid; grid-template-columns: 1fr 1.3fr; gap: 12px; align-items: start; }
-  .media-mid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+  .media-mid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; align-items: stretch; }
+  .media-mid > div { display: flex; flex-direction: column; }
+  .media-mid .ic { flex: 1; }
   .media-contact { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
 
   /* Remove margins inside grid containers */
@@ -200,11 +209,11 @@ footer .fc{font-size:11px;color:var(--muted)}
   .home-exhibit > .ic,
   .home-exhibit > .rc,
   .home-links > .rc,
-  .exhibit-venue-reception > .ic,
+  .exhibit-venue-reception .ic,
   .exhibit-contact > .rc,
   .exhibit-links > .rc,
   .about-contact > .rc,
-  .media-top > .ic,
-  .media-mid > .ic,
+  .media-top .ic,
+  .media-mid .ic,
   .media-contact > .rc { margin-bottom: 0; }
 }

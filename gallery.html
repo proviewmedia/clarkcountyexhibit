@@ -118,18 +118,23 @@ footer .fc{font-size:11px;color:var(--muted)}
 <script>
 // ── ADD YOUR PHOTOS HERE ─────────────────────────────
 const photos=[
-  {id:1, title:"Untitled No. 1",  loc:"Mojave Desert, NV",   src:"assets/gallery/photo-01.jpg"},
-  {id:2, title:"Untitled No. 2",  loc:"Valley of Fire, NV",  src:"assets/gallery/photo-02.jpg"},
-  {id:3, title:"Untitled No. 3",  loc:"Red Rock Canyon, NV", src:"assets/gallery/photo-03.jpg"},
-  {id:4, title:"Untitled No. 4",  loc:"Great Basin, NV",     src:"assets/gallery/photo-04.jpg"},
-  {id:5, title:"Untitled No. 5",  loc:"Joshua Tree, CA",     src:"assets/gallery/photo-05.jpg"},
-  {id:6, title:"Untitled No. 6",  loc:"Zion, UT",            src:"assets/gallery/photo-06.jpg"},
-  {id:7, title:"Untitled No. 7",  loc:"Mojave Desert, NV",   src:"assets/gallery/photo-07.jpg"},
-  {id:8, title:"Untitled No. 8",  loc:"Death Valley, CA",    src:"assets/gallery/photo-08.jpg"},
-  {id:9, title:"Untitled No. 9",  loc:"Nevada",              src:"assets/gallery/photo-09.jpg"},
-  {id:10,title:"Untitled No. 10", loc:"Nevada",              src:"assets/gallery/photo-10.jpg"},
-  {id:11,title:"Untitled No. 11", loc:"Nevada",              src:"assets/gallery/photo-11.jpg"},
-  {id:12,title:"Untitled No. 12", loc:"Nevada",              src:"assets/gallery/photo-12.jpg"},
+  {id:1,  title:"Red Rock Canyon",                loc:"Red Rock Canyon, NV",              src:"assets/gallery/red-rock-main.jpg"},
+  {id:2,  title:"Red Rock Calico Basin",           loc:"Red Rock Canyon, NV",              src:"assets/gallery/red-rock-calico.jpg"},
+  {id:3,  title:"Red Rock Recreational Area",      loc:"Red Rock Canyon, NV",              src:"assets/gallery/red-rock-recreational-area.jpg"},
+  {id:4,  title:"Valley of Fire",                  loc:"Valley of Fire State Park, NV",    src:"assets/gallery/valley-of-fire-full-view.jpg"},
+  {id:5,  title:"Valley of Fire Slot Canyon",       loc:"Valley of Fire State Park, NV",    src:"assets/gallery/valley-of-fire-slot-canyon.jpg"},
+  {id:6,  title:"Fire Wave",                       loc:"Valley of Fire State Park, NV",    src:"assets/gallery/fire-wave-valley-of-fire.jpg"},
+  {id:7,  title:"Lake Mead",                       loc:"Lake Mead National Recreation Area, NV", src:"assets/gallery/lake-mead-main.jpg"},
+  {id:8,  title:"Lake Mead National Recreation Area", loc:"Lake Mead, NV",                 src:"assets/gallery/lake-mead-national-recreational-area.jpg"},
+  {id:9,  title:"Spring Mountains",                loc:"Mt. Charleston, NV",               src:"assets/gallery/spring-mountain-recreational-area.jpg"},
+  {id:10, title:"Great Basin National Park",        loc:"Baker, NV",                        src:"assets/gallery/great-basin-national-park.jpg"},
+  {id:11, title:"Cathedral Gorge",                  loc:"Panaca, NV",                       src:"assets/gallery/cathedral-rock.jpg"},
+  {id:12, title:"Lamoille Canyon",                  loc:"Ruby Mountains, NV",               src:"assets/gallery/lamoille-canyon.jpg"},
+  {id:13, title:"Lake Tahoe",                       loc:"Nevada / California",              src:"assets/gallery/lake-tahoe-reno.jpg"},
+  {id:14, title:"Amargosa Big Dune",                loc:"Amargosa Valley, NV",              src:"assets/gallery/big-dune-sand-dunes.jpg"},
+  {id:15, title:"Sand Mountain",                    loc:"Fallon, NV",                       src:"assets/gallery/sand-mountain.jpg"},
+  {id:16, title:"Nevada Night Sky",                 loc:"Nevada",                           src:"assets/gallery/nevada-night-sky.jpg"},
+  {id:17, title:"Wetlands",                         loc:"Nevada",                           src:"assets/gallery/wetlands.jpg"},
 ];
 sessionStorage.setItem('photos',JSON.stringify(photos));
 const g=document.getElementById('grid');

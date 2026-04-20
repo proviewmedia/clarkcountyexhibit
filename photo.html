@@ -35,6 +35,13 @@ img{display:block}
 .gi img{width:100%;aspect-ratio:1;object-fit:cover;background:#222;min-height:1px}
 .gi .gc{padding:9px 11px 11px}
 .gi .gc strong{display:block;font-size:12.5px;font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.rc{display:flex;align-items:center;gap:12px;background:var(--card);border:1px solid var(--border);border-radius:var(--r);padding:12px 14px;margin-bottom:8px;transition:border-color .15s,transform .15s}
+.rc:hover{border-color:var(--border-h);transform:translateY(-1px)}
+.rc .ico{width:38px;height:38px;border-radius:10px;background:#262626;overflow:hidden;flex-shrink:0;display:flex;align-items:center;justify-content:center}
+.rc .rt{flex:1;min-width:0}
+.rc .rt strong{display:block;font-size:13.5px;font-weight:600}
+.rc .rt span{font-size:12px;color:var(--sub)}
+.rc .arr{font-size:11px;color:var(--muted);flex-shrink:0}
 footer{margin-top:28px;padding-top:28px;border-top:1px solid var(--border);display:flex;flex-direction:column;align-items:center;gap:14px;text-align:center}
 footer .faw{display:flex;flex-direction:column;align-items:center;gap:8px}
 .av{width:52px;height:52px;border-radius:50%;overflow:hidden;background:#2a2a2a;border:1.5px solid var(--border)}
@@ -58,6 +65,17 @@ footer .fc{font-size:11px;color:var(--muted)}
     <span class="pc" id="cnt"></span>
     <a class="pb off" id="next" href="#">Next →</a>
   </div>
+  <div id="desc-card" style="display:none;background:var(--card);border:1px solid var(--border);border-radius:var(--r);padding:16px 16px 20px;margin-top:16px">
+    <p id="desc" style="color:rgba(240,237,232,.7);font-size:14px;line-height:1.78"></p>
+    <div id="details" style="margin-top:14px;font-size:13px;color:var(--sub);line-height:1.8"></div>
+  </div>
+  <a id="shop-link" href="https://proviewmedia.darkroom.com" target="_blank" style="display:none;margin-top:12px" class="rc">
+    <div class="ico">
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="rgba(240,237,232,.5)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
+    </div>
+    <div class="rt"><strong>Shop This Print</strong><span>proviewmedia.darkroom.com</span></div>
+    <span class="arr">↗</span>
+  </a>
   <hr class="div"/>
   <p class="lbl">More Photos</p>
   <div class="gg" id="more"></div>
@@ -76,10 +94,101 @@ footer .fc{font-size:11px;color:var(--muted)}
   </footer>
 </div>
 <script>
+const descriptions={
+  1:{
+    desc:"One of the most breathtaking places in Nevada, Red Rock Canyon spans more than 195,000 acres just 17 miles west of the Las Vegas Strip. The striking contrast of red sandstone layered through gray limestone creates sheer cliff faces reaching up to 1,800 feet.",
+    details:"<strong>Location:</strong><br/>1000 Scenic Loop Drive<br/>Las Vegas, NV 89161<br/><br/><strong>Highlights:</strong><br/>13-mile scenic drive<br/>30+ miles of hiking trails<br/>Rock climbing with 1,200+ named routes<br/>Ancient petroglyphs<br/><br/><strong>Admission:</strong> $15 per vehicle (timed entry required)"
+  },
+  2:{
+    desc:"Calico Basin sits just outside the main entrance to Red Rock Canyon, featuring larger-than-life landscapes brimming with vibrant red sandstone and vistas. Fed year-round by three permanent springs, you'll find cottonwood and ash trees, honey mesquite, and saltgrass meadows amid the desert terrain.",
+    details:"<strong>Location:</strong><br/>Red Rock Canyon<br/>Las Vegas, NV<br/><br/><strong>Highlights:</strong><br/>Calico Hills hiking<br/>Red Springs Picnic Area<br/>Bouldering and rock climbing<br/>Ancient petroglyphs and wildlife"
+  },
+  3:{
+    desc:"Nevada's first National Conservation Area serves as a mecca for the unique qualities of the Mojave Desert. Although close enough that peak tops are visible from the Las Vegas Valley, it's worlds away in terms of atmosphere. At night, the dazzling glow of the city lights from Las Vegas reminds you how close you are to the city.",
+    details:"<strong>Location:</strong><br/>Red Rock Canyon National Conservation Area<br/>Las Vegas, NV 89161<br/><br/><strong>Managed by:</strong> Bureau of Land Management<br/><strong>Size:</strong> 195,000+ acres<br/><strong>Open:</strong> Year-round"
+  },
+  4:{
+    desc:"Nevada's oldest and most visited state park, Valley of Fire is home to 46,000 acres of red Aztec sandstone formed by shifting sand dunes 150 million years ago. The stunning landscape glows red for miles into the horizon and is particularly beautiful at sunset.",
+    details:"<strong>Location:</strong><br/>29450 Valley of Fire Highway<br/>Overton, NV 89040<br/><br/><strong>Highlights:</strong><br/>Elephant Rock<br/>Arch Rock<br/>Ancient petroglyphs<br/>Historic CCC stone cabins<br/><br/><strong>Admission:</strong> $15 out-of-state vehicles"
+  },
+  5:{
+    desc:"A wander through Valley of Fire's fascinating slot canyons reveals millions of years of geologic history carved into the sandstone walls. The narrow passages create a world of swirling color and texture, where light plays off the layered rock in ways that shift throughout the day.",
+    details:"<strong>Location:</strong><br/>Valley of Fire State Park<br/>Overton, NV 89040<br/><br/><strong>Best time to visit:</strong> October through April<br/><strong>Open:</strong> Sunrise to sunset daily"
+  },
+  6:{
+    desc:"Fire Wave is one of the most gorgeous spots in Valley of Fire, featuring white and red zebra stripes of sandstone that create incredible, wave-like formations. The contrasting colors and smooth, flowing rock shapes make it one of the most photographed locations in all of Nevada.",
+    details:"<strong>Location:</strong><br/>Valley of Fire State Park<br/>Overton, NV 89040<br/><br/><strong>Trail:</strong> Fire Wave Trail<br/><strong>Distance:</strong> 1.5 miles round trip<br/><strong>Difficulty:</strong> Moderate"
+  },
+  7:{
+    desc:"America's first and largest national recreation area, Lake Mead spans 1.5 million acres with more than 750 miles of shoreline. Known for rugged mountains, slot canyons, and shimmering water, it sits at the junction of three of the nation's four desert ecosystems: the Mojave, Great Basin, and Sonoran deserts.",
+    details:"<strong>Location:</strong><br/>4 Miles Southeast of Boulder City<br/>Boulder City, NV 89005<br/><br/><strong>Highlights:</strong><br/>Largest manmade reservoir in the US<br/>Historic Railroad Trail<br/>Hoover Dam views<br/>Boating, kayaking, fishing<br/><br/><strong>Admission:</strong> $25 per vehicle"
+  },
+  8:{
+    desc:"Lake Mead's magnificent scenery begs to be explored and photographed. The spellbinding landscape is home to a variety of plants and animals found nowhere else in the world, including desert bighorn sheep, bald eagles, and mountain lions. The lake stretches more than 110 miles across Nevada and Arizona.",
+    details:"<strong>Location:</strong><br/>Lake Mead National Recreation Area<br/>Nevada / Arizona border<br/><br/><strong>Size:</strong> 1.5 million acres<br/><strong>Shoreline:</strong> 750+ miles<br/><strong>Open:</strong> 24 hours, 365 days"
+  },
+  9:{
+    desc:"An hour's drive north from Las Vegas, the Spring Mountains rise to 11,918 feet at Mt. Charleston. Sage turns into a mix of Joshua, pinon, ponderosa pine, juniper, and white fir trees as you gain elevation. The area runs 20 degrees cooler than Las Vegas in summer, and hosts at least 25 species of animals and plants found nowhere else in the world.",
+    details:"<strong>Location:</strong><br/>Spring Mountain Range<br/>Mt. Charleston, NV 89124<br/><br/><strong>Highlights:</strong><br/>11,918-foot peak<br/>Lee Canyon ski resort<br/>Ancient bristlecone pines<br/>20 degrees cooler than Las Vegas<br/>Golden eagles, foxes, wild horses"
+  },
+  10:{
+    desc:"Great Basin National Park boasts some special features hard to come by: a lack of big crowds and an abundance of dark skies. Home to Wheeler Peak at 13,063 feet, Lehman Caves, and bristlecone pines over 4,900 years old, it's one of the least visited national parks — making your time here even more exceptional.",
+    details:"<strong>Location:</strong><br/>5500 W. Hwy 488<br/>Baker, NV 89311<br/><br/><strong>Highlights:</strong><br/>Wheeler Peak (13,063 ft)<br/>Lehman Caves<br/>Ancient bristlecone pines<br/>International Dark Sky Park<br/>Nevada's only remaining glacier<br/><br/><strong>Admission:</strong> Free"
+  },
+  11:{
+    desc:"Among the state parks clustered around Caliente and Pioche, Cathedral Gorge is the region's crown jewel. Once completely underwater, this sanctuary of eroding fins, slot canyons, and hoodoos was shaped by millions of years of volcanic activity and erosion. The otherworldly spires and bluff-colored cliffs are the result of bentonite clay that changes shape after every weather event.",
+    details:"<strong>Location:</strong><br/>111 Cathedral Gorge State Park Road<br/>Panaca, NV 89042<br/><br/><strong>Highlights:</strong><br/>Slot canyons and hoodoos<br/>Miller Point Overlook<br/>Exceptional stargazing<br/>CCC-era structures from the 1930s<br/><br/><strong>Admission:</strong> $10 out-of-state vehicles"
+  },
+  12:{
+    desc:"Known as the \"Swiss Alps of Nevada,\" the Ruby Mountains are a glacier-carved paradise. Lamoille Canyon's 12-mile scenic byway weaves through vistas straight out of a photographer's dream, with access to alpine lakes, towering peaks, waterfalls, and wildflower meadows. The Rubies offer everything from couple-hour hikes to multi-day thru-hikes along the 43-mile Ruby Crest Trail.",
+    details:"<strong>Location:</strong><br/>Lamoille Canyon<br/>Ruby Mountains, NV<br/>Southeast of Elko<br/><br/><strong>Highlights:</strong><br/>12-mile scenic byway<br/>Ruby Crest National Recreation Trail<br/>Alpine lakes and waterfalls<br/>Heli-skiing in winter<br/><br/><strong>Admission:</strong> Free"
+  },
+  13:{
+    desc:"North America's largest alpine lake at 22 miles long and 12 miles wide, Lake Tahoe is also one of the deepest at 1,645 feet. With 72 miles of pristine shoreline hemming in 191 square miles of crystal-clear water, \"Big Blue\" has been a treasure for more than two million years. The massive body of water straddles the Nevada-California border, surrounded by the Sierra Nevada mountains.",
+    details:"<strong>Location:</strong><br/>Lake Tahoe<br/>Nevada / California border<br/>Sierra Nevada<br/><br/><strong>Highlights:</strong><br/>Largest alpine lake in North America<br/>1,645 feet deep<br/>Sand Harbor State Park<br/>Flume Trail hiking<br/>Year-round recreation"
+  },
+  14:{
+    desc:"The closest dunes to the Las Vegas area, Amargosa Big Dune stretches 1.5 miles into the surrounding Mojave Desert, with the biggest dune standing about 500 feet tall. One of only about 30 singing sand dunes on the entire planet, Nevada's very dry conditions create the perfect backdrop for this rare geologic phenomenon where the sand produces its own specific pitch.",
+    details:"<strong>Location:</strong><br/>Valley View Rd. & Hwy. 95<br/>Amargosa Valley, NV 89020<br/><br/><strong>Highlights:</strong><br/>500-foot tall singing sand dune<br/>Rare Big Dune beetle habitat<br/>Primitive camping<br/>Near Death Valley National Park<br/><br/><strong>Admission:</strong> Free"
+  },
+  15:{
+    desc:"The most dominant feature of the 4,795-acre Sand Mountain Recreation Area is Sand Mountain itself — approximately 3.5 miles long, 1 mile wide, and 600 feet in height, making it the largest single dune in the Great Basin. Created by the migration of windblown sand stopped by the rising Stillwater Mountains, it also includes the historic Sand Springs Pony Express Station from 1860.",
+    details:"<strong>Location:</strong><br/>U.S. 50<br/>Churchill County, NV<br/>25 miles SE of Fallon<br/><br/><strong>Highlights:</strong><br/>Largest single dune in the Great Basin<br/>Sand Springs Pony Express Station (1860)<br/>Endemic Sand Mountain Blue Butterfly<br/>23 miles of designated trails<br/><br/><strong>Admission:</strong> $40 for 1-7 days"
+  },
+  16:{
+    desc:"Nevada is home to some of the darkest skies in the Lower 48, offering views of the Milky Way, thousands of constellations, planets, nebulas, and entire galaxies visible to the naked eye. Far from the light pollution of the cities, the open terrain of the Silver State reveals a universe that most people never get to see.",
+    details:"<strong>Location:</strong><br/>Nevada<br/><br/><strong>Highlights:</strong><br/>Some of the darkest skies in the US<br/>Milky Way visible to the naked eye<br/>Great Basin National Park — International Dark Sky Park<br/>Best viewing: spring through fall"
+  },
+  17:{
+    desc:"Nevada's wetlands reveal a side of the desert that most people never expect — lush green marshes teeming with bird life, surrounded by the quiet stillness of the open landscape. These vital ecosystems provide habitat for hundreds of species of migratory birds and serve as a reminder that water and life persist even in the driest of states.",
+    details:"<strong>Location:</strong><br/>Nevada<br/><br/><strong>Highlights:</strong><br/>Critical migratory bird habitat<br/>Unexpected desert oasis<br/>Wildlife viewing and photography"
+  }
+};
+
 const id=parseInt(new URLSearchParams(location.search).get('id'))||1;
 let photos=[];
 try{photos=JSON.parse(sessionStorage.getItem('photos')||'[]')}catch(e){}
-if(!photos.length) photos=Array.from({length:12},(_,i)=>({id:i+1,title:`Untitled No. ${i+1}`,loc:'Nevada',src:`assets/gallery/photo-${String(i+1).padStart(2,'0')}.jpg`}));
+if(!photos.length){
+  photos=[
+    {id:1,  title:"Red Rock Canyon",                loc:"Red Rock Canyon, NV",              src:"assets/gallery/red-rock-main.jpg"},
+    {id:2,  title:"Red Rock Calico Basin",           loc:"Red Rock Canyon, NV",              src:"assets/gallery/red-rock-calico.jpg"},
+    {id:3,  title:"Red Rock Recreational Area",      loc:"Red Rock Canyon, NV",              src:"assets/gallery/red-rock-recreational-area.jpg"},
+    {id:4,  title:"Valley of Fire",                  loc:"Valley of Fire State Park, NV",    src:"assets/gallery/valley-of-fire-full-view.jpg"},
+    {id:5,  title:"Valley of Fire Slot Canyon",       loc:"Valley of Fire State Park, NV",    src:"assets/gallery/valley-of-fire-slot-canyon.jpg"},
+    {id:6,  title:"Fire Wave",                       loc:"Valley of Fire State Park, NV",    src:"assets/gallery/fire-wave-valley-of-fire.jpg"},
+    {id:7,  title:"Lake Mead",                       loc:"Lake Mead National Recreation Area, NV", src:"assets/gallery/lake-mead-main.jpg"},
+    {id:8,  title:"Lake Mead National Recreation Area", loc:"Lake Mead, NV",                 src:"assets/gallery/lake-mead-national-recreational-area.jpg"},
+    {id:9,  title:"Spring Mountains",                loc:"Mt. Charleston, NV",               src:"assets/gallery/spring-mountain-recreational-area.jpg"},
+    {id:10, title:"Great Basin National Park",        loc:"Baker, NV",                        src:"assets/gallery/great-basin-national-park.jpg"},
+    {id:11, title:"Cathedral Gorge",                  loc:"Panaca, NV",                       src:"assets/gallery/cathedral-rock.jpg"},
+    {id:12, title:"Lamoille Canyon",                  loc:"Ruby Mountains, NV",               src:"assets/gallery/lamoille-canyon.jpg"},
+    {id:13, title:"Lake Tahoe",                       loc:"Nevada / California",              src:"assets/gallery/lake-tahoe-reno.jpg"},
+    {id:14, title:"Amargosa Big Dune",                loc:"Amargosa Valley, NV",              src:"assets/gallery/big-dune-sand-dunes.jpg"},
+    {id:15, title:"Sand Mountain",                    loc:"Fallon, NV",                       src:"assets/gallery/sand-mountain.jpg"},
+    {id:16, title:"Nevada Night Sky",                 loc:"Nevada",                           src:"assets/gallery/nevada-night-sky.jpg"},
+    {id:17, title:"Wetlands",                         loc:"Nevada",                           src:"assets/gallery/wetlands.jpg"},
+  ];
+}
 const idx=photos.findIndex(p=>p.id===id);
 const p=photos[idx>=0?idx:0];
 document.getElementById('img').src=p.src;
@@ -87,7 +196,18 @@ document.getElementById('img').alt=p.title;
 document.getElementById('ttl').textContent=p.title;
 document.getElementById('loc').textContent=p.loc;
 document.getElementById('cnt').textContent=`${idx+1} / ${photos.length}`;
-document.title=`${p.title} — Melvin Morales`;
+document.title=`${p.title} — Vistas: Beauty of the Desert`;
+
+// Show description card
+const d=descriptions[p.id];
+if(d){
+  const card=document.getElementById('desc-card');
+  card.style.display='block';
+  document.getElementById('desc').textContent=d.desc;
+  document.getElementById('details').innerHTML=d.details;
+  document.getElementById('shop-link').style.display='flex';
+}
+
 const prev=photos[idx-1],next=photos[idx+1];
 const pb=document.getElementById('prev'),nb=document.getElementById('next');
 if(prev){pb.classList.remove('off');pb.href=`photo.html?id=${prev.id}`}

@@ -166,21 +166,6 @@ footer .fc{font-size:11px;color:var(--muted)}
 
   /* Gallery 3-col */
   .gg { grid-template-columns: 1fr 1fr 1fr; gap: 12px; }
-  .gg .gi:first-child { grid-column: span 2; grid-row: span 2; }
-
-  /* Gallery featured item — overlay caption */
-  .gg .gi:first-child { position: relative; }
-  .gg .gi:first-child img { aspect-ratio: auto; height: 100%; object-fit: cover; }
-  .gg .gi:first-child .gc {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    padding: 16px;
-    background: linear-gradient(transparent, rgba(0,0,0,0.7));
-  }
-  .gg .gi:first-child .gc strong { font-size: 16px; color: #fff; }
-  .gg .gi:first-child .gc span { font-size: 13px; color: rgba(255,255,255,0.7); }
 
   /* Home page grids */
   .home-about { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; align-items: stretch; }

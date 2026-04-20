@@ -183,22 +183,22 @@ footer .fc{font-size:11px;color:var(--muted)}
   .gg .gi:first-child .gc span { font-size: 13px; color: rgba(255,255,255,0.7); }
 
   /* Home page grids */
-  .home-about { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; align-items: start; }
+  .home-about { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; align-items: stretch; }
   .home-about .rc { grid-column: 1 / -1; }
-  .home-exhibit { display: grid; grid-template-columns: 2fr 1fr; gap: 12px; align-items: start; }
-  .home-links { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+  .home-exhibit { display: grid; grid-template-columns: 2fr 1fr; gap: 12px; align-items: stretch; }
+  .home-links { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; align-items: stretch; }
 
   /* Exhibit page grids */
   .exhibit-venue-reception { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; align-items: stretch; }
   .exhibit-venue-reception > div { display: flex; flex-direction: column; }
   .exhibit-venue-reception .ic { flex: 1; }
-  .exhibit-contact { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
-  .exhibit-links { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 8px; }
+  .exhibit-contact { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; align-items: stretch; }
+  .exhibit-links { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 8px; align-items: stretch; }
 
   /* About page grids */
   .about-hero-content { display: grid; grid-template-columns: 1fr 1.2fr; gap: 24px; align-items: start; }
   .about-hero-content .ic { position: sticky; top: 24px; margin-bottom: 0; }
-  .about-contact { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+  .about-contact { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; align-items: stretch; }
 
   /* Photo page layout */
   .photo-layout { display: grid; grid-template-columns: 1.6fr 1fr; gap: 24px; align-items: start; }
@@ -210,7 +210,7 @@ footer .fc{font-size:11px;color:var(--muted)}
   .media-mid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; align-items: stretch; }
   .media-mid > div { display: flex; flex-direction: column; }
   .media-mid .ic { flex: 1; }
-  .media-contact { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+  .media-contact { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; align-items: stretch; }
 
   /* Remove margins inside grid containers */
   .home-about > .ic,

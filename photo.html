@@ -50,9 +50,12 @@
     <div class="rt"><strong>Get Directions</strong><span id="map-label">Google Maps</span></div>
     <span class="arr">↗</span>
   </a>
-  <a id="purchase-btn" href="#" target="_blank" style="display:none;margin-top:12px;text-align:center;background:var(--txt);color:#111;border-color:transparent;border-radius:var(--r);padding:14px 20px;font-size:14px;font-weight:600;letter-spacing:-.2px;transition:opacity .15s">
-    Purchase Original Gallery Print — $125
-  </a>
+  <div id="purchase-wrap" style="display:none;margin-top:12px">
+    <a id="purchase-btn" href="#" target="_blank" style="display:block;text-align:center;background:var(--txt);color:#111;border-color:transparent;border-radius:var(--r);padding:14px 20px;font-size:14px;font-weight:600;letter-spacing:-.2px;transition:opacity .15s">
+      Purchase Gallery Framed Print — $125
+    </a>
+    <p style="text-align:center;font-size:11.5px;color:var(--sub);margin-top:8px;line-height:1.5">Includes high quality photographic print with<br/>handcrafted wood frame, ready to display</p>
+  </div>
   <a id="shop-link" href="https://proviewmedia.darkroom.com" target="_blank" style="display:none;margin-top:8px" class="rc">
     <div class="ico">
       <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="rgba(240,237,232,.5)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
@@ -238,16 +241,17 @@ if(d){
     mapLink.style.display='flex';
     document.getElementById('map-label').textContent=p.loc;
   }
+  const purchaseWrap=document.getElementById('purchase-wrap');
   const purchaseBtn=document.getElementById('purchase-btn');
   if(sold.includes(p.id)){
-    purchaseBtn.style.display='block';
+    purchaseWrap.style.display='block';
     purchaseBtn.textContent='Sold';
     purchaseBtn.style.opacity='0.5';
     purchaseBtn.style.pointerEvents='none';
     purchaseBtn.removeAttribute('href');
   } else if(purchaseLinks[p.id]){
     purchaseBtn.href=purchaseLinks[p.id];
-    purchaseBtn.style.display='block';
+    purchaseWrap.style.display='block';
   }
 }
 

@@ -80,6 +80,9 @@
   </footer>
 </div>
 <script>
+// Add photo IDs here when sold (e.g. [4, 13] means Valley of Fire and Lake Tahoe are sold)
+const sold=[];
+
 const purchaseLinks={
   1:"https://buy.stripe.com/test_7sYbIU80sgze9jr61h7Zu02",
   2:"https://buy.stripe.com/test_eVq00c1C4dn2eDLcpF7Zu03",
@@ -236,7 +239,13 @@ if(d){
     document.getElementById('map-label').textContent=p.loc;
   }
   const purchaseBtn=document.getElementById('purchase-btn');
-  if(purchaseLinks[p.id]){
+  if(sold.includes(p.id)){
+    purchaseBtn.style.display='block';
+    purchaseBtn.textContent='Sold';
+    purchaseBtn.style.opacity='0.5';
+    purchaseBtn.style.pointerEvents='none';
+    purchaseBtn.removeAttribute('href');
+  } else if(purchaseLinks[p.id]){
     purchaseBtn.href=purchaseLinks[p.id];
     purchaseBtn.style.display='block';
   }

@@ -80,6 +80,26 @@
   </footer>
 </div>
 <script>
+const purchaseLinks={
+  1:"https://buy.stripe.com/test_7sYbIU80sgze9jr61h7Zu02",
+  2:"https://buy.stripe.com/test_eVq00c1C4dn2eDLcpF7Zu03",
+  3:"https://buy.stripe.com/test_00weV66Wo82Ianv75l7Zu04",
+  4:"https://buy.stripe.com/test_eVqaEQ80saaQanvblB7Zu01",
+  5:"https://buy.stripe.com/test_eVq5kw94w3Ms3Z7blB7Zu05",
+  6:"https://buy.stripe.com/test_6oU3coa8A3Ms0MV0GX7Zu06",
+  7:"https://buy.stripe.com/test_aFa4gs1C4fvafHP61h7Zu07",
+  8:"https://buy.stripe.com/test_8x28wIdkMaaQbrz9dt7Zu08",
+  9:"https://buy.stripe.com/test_cNiaEQgwY6YE1QZ0GX7Zu09",
+  10:"https://buy.stripe.com/test_28E8wI94w4Qwbrz75l7Zu0a",
+  11:"https://buy.stripe.com/test_28EfZagwYfvaeDL0GX7Zu0b",
+  12:"https://buy.stripe.com/test_28E00c0y05UA8fnfBR7Zu0c",
+  13:"https://buy.stripe.com/test_4gM5kw5Sk6YEbrzcpF7Zu0d",
+  14:"https://buy.stripe.com/test_5kQ9AM80sbeUdzH89p7Zu0e",
+  15:"https://buy.stripe.com/test_cNi8wIfsU82I9jrcpF7Zu0f",
+  16:"https://buy.stripe.com/test_9B600c94w82I3Z7exN7Zu0g",
+  17:"https://buy.stripe.com/test_5kQaEQbcEgzebrz9dt7Zu0h"
+};
+
 const descriptions={
   1:{
     desc:"One of the most breathtaking places in Nevada, Red Rock Canyon spans more than 195,000 acres just 17 miles west of the Las Vegas Strip. The striking contrast of red sandstone layered through gray limestone creates sheer cliff faces reaching up to 1,800 feet.",
@@ -215,7 +235,11 @@ if(d){
     mapLink.style.display='flex';
     document.getElementById('map-label').textContent=p.loc;
   }
-  document.getElementById('purchase-btn').style.display='block';
+  const purchaseBtn=document.getElementById('purchase-btn');
+  if(purchaseLinks[p.id]){
+    purchaseBtn.href=purchaseLinks[p.id];
+    purchaseBtn.style.display='block';
+  }
 }
 
 const prev=photos[idx-1],next=photos[idx+1];

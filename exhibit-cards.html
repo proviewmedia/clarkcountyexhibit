@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Exhibit Reference — Vistas: Beauty of the Desert</title>
+<meta name="robots" content="noindex"/>
+<style>
+  *{box-sizing:border-box;margin:0;padding:0}
+  html,body{background:#fff;color:#111;font-family:Georgia,'Times New Roman',serif;-webkit-font-smoothing:antialiased}
+  .page{max-width:680px;margin:0 auto;padding:48px 32px}
+
+  .entry{margin-bottom:36px;page-break-inside:avoid;break-inside:avoid}
+  .entry p{font-size:14px;line-height:1.65;color:#111}
+  .entry .name{font-weight:700}
+  .entry .loc{font-style:italic;color:#555;font-size:13px;margin-bottom:10px}
+  .entry .body{margin-bottom:18px}
+  .entry img.qr{width:180px;height:180px;display:block;image-rendering:pixelated}
+
+  hr{border:0;border-top:1px solid #bbb;margin:36px 0}
+
+  @media print{
+    .page{max-width:none;padding:0.5in}
+    @page{size:letter;margin:0.5in}
+  }
+</style>
+</head>
+<body>
+<div class="page" id="page"></div>
+
+<script>
+const entries = [
+  {id:1,  title:"Calico Basin",                       loc:"Red Rock Canyon, NV",
+   desc:"Calico Basin sits just outside the main entrance to Red Rock Canyon, featuring larger-than-life landscapes brimming with vibrant red sandstone and vistas. Fed year-round by three permanent springs, you'll find cottonwood and ash trees, honey mesquite, and saltgrass meadows amid the desert terrain."},
+  {id:2,  title:"Amargosa Big Dune",                  loc:"Amargosa Valley, NV",
+   desc:"The closest dunes to the Las Vegas area, Amargosa Big Dune stretches 1.5 miles into the surrounding Mojave Desert, with the biggest dune standing about 500 feet tall. One of only about 30 singing sand dunes on the entire planet, Nevada's very dry conditions create the perfect backdrop for this rare geologic phenomenon where the sand produces its own specific pitch."},
+  {id:3,  title:"Red Rock Canyon",                    loc:"Red Rock Canyon, NV",
+   desc:"One of the most breathtaking places in Nevada, Red Rock Canyon spans more than 195,000 acres just 17 miles west of the Las Vegas Strip. The striking contrast of red sandstone layered through gray limestone creates sheer cliff faces reaching up to 1,800 feet."},
+  {id:4,  title:"Fire Wave",                          loc:"Valley of Fire State Park, NV",
+   desc:"Fire Wave is one of the most gorgeous spots in Valley of Fire, featuring white and red zebra stripes of sandstone that create incredible, wave-like formations. The contrasting colors and smooth, flowing rock shapes make it one of the most photographed locations in all of Nevada."},
+  {id:5,  title:"Lake Mead",                          loc:"Lake Mead National Recreation Area, NV",
+   desc:"America's first and largest national recreation area, Lake Mead spans 1.5 million acres with more than 750 miles of shoreline. Known for rugged mountains, slot canyons, and shimmering water, it sits at the junction of three of the nation's four desert ecosystems: the Mojave, Great Basin, and Sonoran deserts."},
+  {id:6,  title:"Slot Canyon",                        loc:"Valley of Fire State Park, NV",
+   desc:"A wander through Valley of Fire's fascinating slot canyons reveals millions of years of geologic history carved into the sandstone walls. The narrow passages create a world of swirling color and texture, where light plays off the layered rock in ways that shift throughout the day."},
+  {id:7,  title:"Cathedral Gorge",                    loc:"Panaca, NV",
+   desc:"Among the state parks clustered around Caliente and Pioche, Cathedral Gorge is the region's crown jewel. Once completely underwater, this sanctuary of eroding fins, slot canyons, and hoodoos was shaped by millions of years of volcanic activity and erosion. The otherworldly spires and bluff-colored cliffs are the result of bentonite clay that changes shape after every weather event."},
+  {id:8,  title:"Lake Tahoe",                         loc:"Nevada / California",
+   desc:"North America's largest alpine lake at 22 miles long and 12 miles wide, Lake Tahoe is also one of the deepest at 1,645 feet. With 72 miles of pristine shoreline hemming in 191 square miles of crystal-clear water, \"Big Blue\" has been a treasure for more than two million years. The massive body of water straddles the Nevada-California border, surrounded by the Sierra Nevada mountains."},
+  {id:9,  title:"Lake Mead National Recreation Area", loc:"Lake Mead, NV",
+   desc:"Lake Mead's magnificent scenery begs to be explored and photographed. The spellbinding landscape is home to a variety of plants and animals found nowhere else in the world, including desert bighorn sheep, bald eagles, and mountain lions. The lake stretches more than 110 miles across Nevada and Arizona."},
+  {id:10, title:"Lamoille Canyon",                    loc:"Ruby Mountains, NV",
+   desc:"Known as the \"Swiss Alps of Nevada,\" the Ruby Mountains are a glacier-carved paradise. Lamoille Canyon's 12-mile scenic byway weaves through vistas straight out of a photographer's dream, with access to alpine lakes, towering peaks, waterfalls, and wildflower meadows. The Rubies offer everything from couple-hour hikes to multi-day thru-hikes along the 43-mile Ruby Crest Trail."},
+  {id:11, title:"Sand Mountain",                      loc:"Fallon, NV",
+   desc:"The most dominant feature of the 4,795-acre Sand Mountain Recreation Area is Sand Mountain itself, approximately 3.5 miles long, 1 mile wide, and 600 feet in height, making it the largest single dune in the Great Basin. Created by the migration of windblown sand stopped by the rising Stillwater Mountains, it also includes the historic Sand Springs Pony Express Station from 1860."},
+  {id:12, title:"Great Basin National Park",          loc:"Baker, NV",
+   desc:"Great Basin National Park boasts some special features hard to come by: a lack of big crowds and an abundance of dark skies. Home to Wheeler Peak at 13,063 feet, Lehman Caves, and bristlecone pines over 4,900 years old, it's one of the least visited national parks, making your time here even more exceptional."},
+  {id:13, title:"Valley of Fire",                     loc:"Valley of Fire State Park, NV",
+   desc:"Nevada's oldest and most visited state park, Valley of Fire is home to 46,000 acres of red Aztec sandstone formed by shifting sand dunes 150 million years ago. The stunning landscape glows red for miles into the horizon and is particularly beautiful at sunset."},
+  {id:14, title:"Wetlands",                           loc:"Henderson, NV",
+   desc:"Henderson's wetlands reveal a side of the desert that most people never expect: lush green marshes teeming with bird life, surrounded by the quiet stillness of the open landscape. These vital ecosystems provide habitat for hundreds of species of migratory birds and serve as a reminder that water and life persist even in the driest of states."},
+  {id:15, title:"Joshua Tree",                        loc:"Mt. Charleston, NV",
+   desc:"An hour's drive north from Las Vegas, the Spring Mountains rise to 11,918 feet at Mt. Charleston. Sage turns into a mix of joshua, piñon, ponderosa pine, juniper, and white fir trees as you gain elevation. The area runs 20 degrees cooler than Las Vegas in summer, and hosts at least 25 species of animals and plants found nowhere else in the world."},
+  {id:16, title:"Nevada Night Sky",                   loc:"Elko, NV",
+   desc:"Nevada is home to some of the darkest skies in the Lower 48, offering views of the Milky Way, thousands of constellations, planets, nebulas, and entire galaxies visible to the naked eye. Near Elko in northeastern Nevada, far from the light pollution of the cities, the open terrain reveals a universe that most people never get to see."},
+  {id:17, title:"Red Rock Recreational Area",         loc:"Red Rock Canyon, NV",
+   desc:"Nevada's first National Conservation Area serves as a mecca for the unique qualities of the Mojave Desert. Although close enough that peak tops are visible from the Las Vegas Valley, it's worlds away in terms of atmosphere. At night, the dazzling glow of the city lights from Las Vegas reminds you how close you are to the city."}
+];
+
+const slugs = [
+  "calico-basin","amargosa-big-dune","red-rock-canyon","fire-wave","lake-mead",
+  "slot-canyon","cathedral-gorge","lake-tahoe","lake-mead-nra","lamoille-canyon",
+  "sand-mountain","great-basin","valley-of-fire","wetlands","joshua-tree",
+  "nevada-night-sky","red-rock-recreational-area"
+];
+
+const page = document.getElementById('page');
+entries.forEach((e, i) => {
+  const n = String(e.id).padStart(2,'0');
+  const slug = slugs[i];
+  const block = document.createElement('div');
+  block.className = 'entry';
+  block.innerHTML = `
+    <p class="body"><span class="name">${n}. ${e.title}</span> <span class="loc">— ${e.loc}</span><br/>${e.desc}</p>
+    <img class="qr" src="assets/qrcodes/${n}-${slug}.png" alt="QR code for ${e.title}"/>
+  `;
+  page.appendChild(block);
+  if (i < entries.length - 1) {
+    page.appendChild(document.createElement('hr'));
+  }
+});
+</script>
+</body>
+</html>

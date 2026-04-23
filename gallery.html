@@ -12,12 +12,12 @@
   gtag('config', 'G-70ZT6L5CVP');
 </script>
 <title>Gallery — Vistas: Beauty of the Desert | Nevada Landscape Photography by Melvin Morales</title>
-<meta name="description" content="Browse the gallery from Vistas: Beauty of the Desert. Landscape photographs of Nevada's deserts, mountains, and open terrain by Melvin Morales. Red Rock Canyon, Lake Tahoe, Valley of Fire, Great Basin, and more. High quality prints available."/>
-<meta name="keywords" content="Nevada landscape gallery, desert photography gallery, Red Rock Canyon photos, Lake Tahoe photography, Valley of Fire Nevada, Great Basin Nevada, Nevada nature photos, landscape prints, buy Nevada photography prints, Melvin Morales gallery, Vistas Beauty of the Desert gallery, Nevada road trip photography, explore Nevada photos"/>
+<meta name="description" content="A scroll through Nevada. Seventeen photographs from the Vistas: Beauty of the Desert exhibit by Melvin Morales — Red Rock, Valley of Fire, Lake Tahoe, Great Basin, and more. High quality prints available."/>
+<meta name="keywords" content="Nevada landscape gallery, desert photography gallery, Red Rock Canyon photos, Lake Tahoe photography, Valley of Fire Nevada, Great Basin Nevada, Nevada nature photos, landscape prints, buy Nevada photography prints, Melvin Morales gallery, Vistas Beauty of the Desert gallery"/>
 <meta name="author" content="Melvin Morales"/>
 <meta name="robots" content="index, follow"/>
 <meta property="og:title" content="Gallery — Vistas: Beauty of the Desert"/>
-<meta property="og:description" content="Browse landscape photographs of Nevada's diverse terrain. Prints available at proviewmedia.darkroom.com."/>
+<meta property="og:description" content="A scroll through Nevada — 17 photographs from the Vistas exhibit."/>
 <meta property="og:url" content="https://vistasexhibit.com/gallery.html"/>
 <link rel="canonical" href="https://vistasexhibit.com/gallery.html"/>
 <meta property="og:type" content="website"/>
@@ -26,7 +26,7 @@
 <meta property="og:image:height" content="630"/>
 <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:title" content="Gallery — Vistas: Beauty of the Desert"/>
-<meta name="twitter:description" content="Browse landscape photographs of Nevada's diverse terrain. Prints available at proviewmedia.darkroom.com."/>
+<meta name="twitter:description" content="A scroll through Nevada — 17 photographs from the Vistas exhibit."/>
 <meta name="twitter:image" content="https://vistasexhibit.com/assets/sample-redrocks.jpg"/>
 <link rel="icon" type="image/svg+xml" href="assets/favicon.svg"/>
 <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png"/>
@@ -37,36 +37,399 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet"/>
 <link rel="stylesheet" href="styles.css"/>
+<style>
+/* ═══════════════════════════════════════════════════════════
+   EDITORIAL GALLERY — scoped to .ed, contained cards, varied layouts
+   ═══════════════════════════════════════════════════════════ */
+.ed{
+  width:100%;
+  max-width:920px;
+  margin:0 auto;
+  padding:8px clamp(16px,3vw,24px) 80px;
+  font-family:'Times New Roman',Times,serif;
+  color:#f0ede8;
+}
+
+/* Editorial intro (inline, not 100vh) */
+.ed-intro{
+  text-align:center;
+  padding:clamp(28px,6vh,72px) 0 clamp(44px,8vh,96px);
+  border-bottom:1px solid rgba(255,255,255,0.06);
+  margin-bottom:clamp(40px,7vh,80px);
+}
+.ed-kicker{
+  font-family:'Inter',-apple-system,sans-serif;
+  font-size:10.5px;letter-spacing:.32em;text-transform:uppercase;
+  color:rgba(240,237,232,.5);
+  margin-bottom:18px;
+}
+.ed-title{
+  font-size:clamp(32px,5.4vw,58px);
+  font-weight:400;font-style:italic;
+  letter-spacing:-0.015em;line-height:1.08;
+  max-width:780px;margin:0 auto;
+}
+.ed-sub{
+  font-family:'Inter',-apple-system,sans-serif;
+  font-size:clamp(13px,1.25vw,15px);
+  color:rgba(240,237,232,.55);
+  max-width:480px;margin:22px auto 0;
+  line-height:1.6;
+}
+
+/* Act divider — small, inline, elegant */
+.ed-act{
+  display:flex;align-items:center;gap:16px;
+  margin:clamp(36px,6vh,72px) 0 clamp(22px,4vh,36px);
+  padding:0 clamp(4px,.8vw,10px);
+}
+.ed-act-num{
+  font-size:clamp(40px,5vw,60px);
+  font-style:italic;
+  color:rgba(240,237,232,.8);
+  line-height:1;flex-shrink:0;
+}
+.ed-act-info{flex:1;min-width:0;border-top:1px solid rgba(240,237,232,.22);padding-top:14px}
+.ed-act-title{
+  font-family:'Inter',-apple-system,sans-serif;
+  font-size:11px;letter-spacing:.32em;text-transform:uppercase;
+  color:rgba(240,237,232,.78);
+  margin-bottom:6px;
+}
+.ed-act-sub{
+  font-size:clamp(15px,1.6vw,21px);
+  font-style:italic;
+  color:rgba(240,237,232,.68);
+  line-height:1.35;
+}
+
+/* Layout rows — varied. Each row gets generous breathing room so every image has its moment. */
+.ed-row{
+  display:grid;gap:clamp(12px,1.5vw,20px);
+  margin:clamp(60px,11vh,140px) 0;
+  align-items:start;
+}
+.ed-row.cols-1{grid-template-columns:1fr;margin:clamp(80px,15vh,180px) 0}
+.ed-row.cols-2{grid-template-columns:1fr 1fr}
+.ed-row.cols-3{grid-template-columns:1fr 1fr 1fr}
+
+/* Multi-column rows: force matching aspect within the row, by orientation */
+.ed-row.cols-2.land .ph-img,
+.ed-row.cols-3.land .ph-img{aspect-ratio:3/2;object-fit:cover;width:100%;height:auto}
+.ed-row.cols-2.port .ph-img,
+.ed-row.cols-3.port .ph-img{aspect-ratio:3/4;object-fit:cover;width:100%;height:auto}
+
+/* Full-width solo: cinematic, restrained */
+.ed-row.cols-1.land{max-width:780px;margin-left:auto;margin-right:auto}
+.ed-row.cols-1.land .ph-img{aspect-ratio:16/9;object-fit:cover;width:100%;height:auto;max-height:440px}
+.ed-row.cols-1.port{max-width:420px;margin-left:auto;margin-right:auto}
+.ed-row.cols-1.port .ph-img{aspect-ratio:3/4;object-fit:cover;width:100%;height:auto}
+
+/* Small leading mark above each row — hairline + row number */
+.ed-row-mark{
+  display:flex;align-items:center;gap:14px;
+  max-width:780px;margin:0 auto clamp(14px,2.2vh,26px);
+  opacity:0;transition:opacity .8s ease .1s;
+}
+.ed-row.in-mark .ed-row-mark{opacity:1}
+.ed-row-mark .rm-rule{flex:1;height:1px;background:rgba(240,237,232,.18)}
+.ed-row-mark .rm-n{
+  font-family:'Inter',-apple-system,sans-serif;
+  font-size:10px;letter-spacing:.28em;color:rgba(240,237,232,.5);
+  font-variant-numeric:tabular-nums;
+}
+
+@media (max-width:760px){
+  .ed-row.cols-2,.ed-row.cols-3{grid-template-columns:1fr}
+}
+
+/* Photo card — very slow, deliberate arrival */
+.ph{
+  position:relative;display:block;
+  border-radius:clamp(8px,1vw,12px);
+  overflow:hidden;
+  background:#1a1a1a;
+  border:1px solid rgba(255,255,255,0.06);
+  opacity:0;
+  transition:opacity 2.4s cubic-bezier(.15,.7,.3,1),
+             transform 3.2s cubic-bezier(.15,.7,.3,1),
+             filter 2.4s cubic-bezier(.15,.7,.3,1),
+             border-color .25s ease;
+  will-change:opacity,transform,filter;
+}
+.ph.in{opacity:1}
+.ph:hover{border-color:rgba(255,255,255,0.16)}
+
+/* ═══ 17 UNIQUE ENTRANCE EFFECTS — one per photograph ═══ */
+
+/* 01 — Red Rock Canyon: 3D door opens from the left */
+.ph.fx1{transform:perspective(1600px) rotateY(-22deg) translateX(-60px) scale(.9);transform-origin:left center}
+.ph.fx1.in{transform:perspective(1600px) rotateY(0) translateX(0) scale(1)}
+
+/* 02 — Calico Basin: zoom-in from small */
+.ph.fx2{transform:scale(.74);filter:brightness(.5) saturate(.7)}
+.ph.fx2.in{transform:scale(1);filter:brightness(1) saturate(1)}
+
+/* 03 — Recreational Area: slides in from the right */
+.ph.fx3{transform:translateX(180px) scale(.95)}
+.ph.fx3.in{transform:translateX(0) scale(1)}
+
+/* 04 — Valley of Fire: rises from below */
+.ph.fx4{transform:translateY(140px) scale(.94)}
+.ph.fx4.in{transform:translateY(0) scale(1)}
+
+/* 05 — Slot Canyon: blur sharpens to focus */
+.ph.fx5{filter:blur(22px) saturate(1.2);transform:scale(1.1)}
+.ph.fx5.in{filter:blur(0) saturate(1);transform:scale(1)}
+
+/* 06 — Fire Wave: subtle counter-clockwise rotation */
+.ph.fx6{transform:rotate(-6deg) translateY(50px);filter:brightness(.65)}
+.ph.fx6.in{transform:rotate(0) translateY(0);filter:brightness(1)}
+
+/* 07 — Cathedral Gorge: falls from above */
+.ph.fx7{transform:translateY(-140px) scale(.95)}
+.ph.fx7.in{transform:translateY(0) scale(1)}
+
+/* 08 — Lake Mead: shimmer (bright-and-soft → normal) */
+.ph.fx8{filter:brightness(1.9) blur(6px);transform:scale(1.04)}
+.ph.fx8.in{filter:brightness(1) blur(0);transform:scale(1)}
+
+/* 09 — Lake Mead NRA: 3D door opens from the right */
+.ph.fx9{transform:perspective(1600px) rotateY(22deg) translateX(60px) scale(.9);transform-origin:right center}
+.ph.fx9.in{transform:perspective(1600px) rotateY(0) translateX(0) scale(1)}
+
+/* 10 — Wetlands: diagonal from top-right */
+.ph.fx10{transform:translate(120px,-120px) scale(.9)}
+.ph.fx10.in{transform:translate(0,0) scale(1)}
+
+/* 11 — Lake Tahoe: zoom-out from too-large */
+.ph.fx11{transform:scale(1.28);filter:blur(4px)}
+.ph.fx11.in{transform:scale(1);filter:blur(0)}
+
+/* 12 — Night Sky: perspective push from far away */
+.ph.fx12{transform:perspective(1000px) translateZ(-600px);filter:brightness(.4) blur(8px)}
+.ph.fx12.in{transform:perspective(1000px) translateZ(0);filter:brightness(1) blur(0)}
+
+/* 13 — Great Basin: sweeps in from far left */
+.ph.fx13{transform:translateX(-220px) scale(.94)}
+.ph.fx13.in{transform:translateX(0) scale(1)}
+
+/* 14 — Spring Mountains: skew settles */
+.ph.fx14{transform:skewY(-5deg) translateX(-60px);filter:brightness(.65)}
+.ph.fx14.in{transform:skewY(0) translateX(0);filter:brightness(1)}
+
+/* 15 — Sand Mountain: subtle clockwise rotation */
+.ph.fx15{transform:rotate(6deg) translateY(70px);filter:brightness(.65)}
+.ph.fx15.in{transform:rotate(0) translateY(0);filter:brightness(1)}
+
+/* 16 — Big Dune: diagonal from bottom-left */
+.ph.fx16{transform:translate(-120px,120px) scale(.9)}
+.ph.fx16.in{transform:translate(0,0) scale(1)}
+
+/* 17 — Lamoille Canyon: 3D flip, page-turning close */
+.ph.fx17{transform:perspective(1400px) rotateX(-48deg) translateY(60px);transform-origin:bottom center}
+.ph.fx17.in{transform:perspective(1400px) rotateX(0) translateY(0)}
+
+/* Staggered children within a row — JS sets --d on each card */
+.ph{transition-delay:var(--d,0ms)}
+
+/* CONTINUOUS MOTION — once in view, image drifts gently (Ken Burns) */
+.ph.in .ph-img{animation:drift 28s ease-in-out infinite alternate;animation-delay:1.5s}
+@keyframes drift{
+  from{transform:translate(0,0) scale(1)}
+  to  {transform:translate(-1.6%,-1.2%) scale(1.05)}
+}
+
+/* CAPTION CASCADE — plain text BELOW the image. Siblings of .ph, revealed when .ph has .in */
+.ph-cap > *{opacity:0;transform:translateY(14px);
+  transition:opacity 1.2s cubic-bezier(.2,.65,.3,1),
+             transform 1.2s cubic-bezier(.2,.65,.3,1)}
+.ph.in ~ .ph-cap > .ph-num{opacity:1;transform:translateY(0);transition-delay:calc(var(--d,0ms) + 2000ms)}
+.ph.in ~ .ph-cap > .ph-title{opacity:1;transform:translateY(0);transition-delay:calc(var(--d,0ms) + 2300ms)}
+.ph.in ~ .ph-cap > .ph-loc{opacity:1;transform:translateY(0);transition-delay:calc(var(--d,0ms) + 2600ms)}
+.ph.in ~ .ph-cap > .ph-prose{opacity:1;transform:translateY(0);transition-delay:calc(var(--d,0ms) + 2900ms)}
+.ph.in ~ .ph-cap > .ph-cta-link{opacity:1;transform:translateY(0);transition-delay:calc(var(--d,0ms) + 3200ms)}
+.ph-img{
+  display:block;width:100%;height:auto;
+  transition:transform .8s cubic-bezier(.2,.6,.2,1);
+}
+.ph:hover .ph-img{transform:scale(1.015)}
+
+/* Caption — sits BELOW the image as plain text, never overlaid */
+.ph-cap{
+  padding:clamp(8px,1.2vh,18px) 4px 0;
+  text-align:left;
+  max-width:100%;
+}
+.ph-num{
+  font-family:'Inter',-apple-system,sans-serif;
+  font-size:10.5px;letter-spacing:.3em;text-transform:uppercase;
+  color:rgba(240,237,232,.48);
+  margin-bottom:10px;font-variant-numeric:tabular-nums;
+}
+.ph-title{
+  font-size:clamp(22px,3vw,36px);
+  font-weight:400;font-style:italic;
+  line-height:1.1;letter-spacing:-0.01em;
+  margin-bottom:8px;
+  color:#f0ede8;
+}
+.ph-loc{
+  font-family:'Inter',-apple-system,sans-serif;
+  font-size:11px;letter-spacing:.22em;text-transform:uppercase;
+  color:rgba(240,237,232,.58);
+  margin-bottom:14px;
+}
+.ph-prose{
+  font-family:'Times New Roman',Times,serif;
+  font-size:clamp(16px,1.5vw,20px);
+  font-style:italic;
+  line-height:1.5;
+  color:rgba(240,237,232,.78);
+  margin-bottom:18px;
+  letter-spacing:-0.003em;
+  max-width:620px;
+}
+.ph-cta-link{
+  display:inline-block;
+  font-family:'Inter',-apple-system,sans-serif;
+  font-size:11.5px;letter-spacing:.16em;text-transform:uppercase;
+  color:rgba(240,237,232,.85);
+  padding:3px 0 4px;
+  border-bottom:1px solid rgba(240,237,232,.32);
+  transition:color .2s,border-color .2s;
+}
+.ph-cta-link:hover{color:#f0ede8;border-color:#f0ede8}
+
+/* Prose block — editorial interstitial, feels like a chapter break */
+.ed-prose{
+  max-width:740px;margin:clamp(90px,17vh,200px) auto;
+  padding:0 clamp(16px,3vw,24px);
+  text-align:center;
+  opacity:0;transform:translateY(32px);
+  transition:opacity 1.8s cubic-bezier(.2,.65,.3,1),
+             transform 1.8s cubic-bezier(.2,.65,.3,1);
+}
+.ed-prose.in{opacity:1;transform:translateY(0)}
+.ed-prose p{
+  font-family:'Times New Roman',Times,serif;
+  font-size:clamp(22px,2.8vw,34px);
+  font-style:italic;
+  line-height:1.32;
+  color:rgba(240,237,232,.88);
+  letter-spacing:-0.01em;
+}
+@media (prefers-reduced-motion:reduce){
+  .ed-prose{opacity:1!important;transform:none!important;transition:none!important}
+}
+
+/* (no overlay CTA — caption lives below the image in plain text) */
+
+/* OUTRO */
+.ed-outro{
+  margin-top:clamp(64px,10vh,120px);
+  padding-top:clamp(40px,6vh,64px);
+  border-top:1px solid rgba(255,255,255,0.08);
+  text-align:center;
+}
+.ed-outro .ed-kicker{margin-bottom:14px}
+.ed-outro-title{
+  font-size:clamp(24px,3.6vw,38px);
+  font-style:italic;font-weight:400;
+  margin-bottom:28px;line-height:1.15;
+  letter-spacing:-0.01em;
+}
+
+/* Small grid index (secondary) */
+.ed-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fill,minmax(160px,1fr));
+  gap:10px;
+  margin-top:36px;
+  text-align:left;
+}
+.ed-grid a{
+  position:relative;display:block;aspect-ratio:4/3;
+  overflow:hidden;border-radius:10px;background:#1c1c1c;
+  border:1px solid rgba(255,255,255,0.08);
+  transition:transform .25s ease,border-color .2s;
+}
+.ed-grid a:hover{transform:translateY(-2px);border-color:rgba(255,255,255,0.18)}
+.ed-grid img{width:100%;height:100%;object-fit:cover;transition:transform .5s ease}
+.ed-grid a:hover img{transform:scale(1.04)}
+.ed-grid .gc{
+  position:absolute;left:0;right:0;bottom:0;padding:9px 11px;
+  background:linear-gradient(to top,rgba(0,0,0,.85),transparent);
+}
+.ed-grid .gc strong{display:block;font-size:13px;font-weight:400;font-style:italic}
+.ed-grid .gc span{display:block;font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:rgba(240,237,232,.62);margin-top:2px;font-family:'Inter',-apple-system,sans-serif;font-style:normal}
+
+.ed-shop{
+  display:inline-flex;align-items:center;gap:10px;
+  margin-top:44px;
+  padding:13px 28px;
+  border:1px solid rgba(240,237,232,.3);border-radius:999px;
+  font-family:'Inter',-apple-system,sans-serif;
+  font-size:12px;letter-spacing:.14em;text-transform:uppercase;
+  color:#f0ede8;
+  transition:background .2s,color .2s,border-color .2s;
+}
+.ed-shop:hover{background:#f0ede8;color:#000;border-color:#f0ede8}
+
+/* Reduced motion */
+@media (prefers-reduced-motion:reduce){
+  .ph{opacity:1!important;transform:none!important;transition:none!important}
+  .ph-img,.ph:hover .ph-img{transition:none!important;transform:none!important}
+}
+</style>
 </head>
 <body>
-<div class="pg">
 
-  <div class="hero">
+<!-- Top bar (narrow container) -->
+<div class="pg" style="padding-bottom:0">
+  <div class="hero" style="padding-bottom:16px">
     <div style="width:76px;height:76px;border-radius:50%;overflow:hidden;background:#fff;display:flex;align-items:center;justify-content:center;border:1.5px solid var(--border)">
       <img src="assets/library-district-logo.png" alt="Las Vegas-Clark County Library District" style="width:60px;height:auto;display:block"/>
     </div>
     <h1>Gallery</h1>
     <p class="role">Vistas: Beauty of the Desert</p>
   </div>
-
   <nav class="nav">
     <a href="index.html">Home</a>
     <a href="exhibit.html">The Exhibit</a>
     <a href="about.html">About Me</a>
     <a href="gallery.html" class="on">Gallery</a>
   </nav>
+</div>
 
-  <p class="lbl">All Photographs</p>
-  <div class="gg" id="grid"></div>
+<!-- ═══ EDITORIAL GALLERY ═══ -->
+<main class="ed" id="ed">
 
-  <a class="rc" href="https://proviewmedia.darkroom.com" target="_blank" style="margin-top:20px">
-    <div class="ico">
-      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="rgba(240,237,232,.5)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
-    </div>
-    <div class="rt"><strong>Shop Prints</strong><span>Purchase high quality prints from the collection</span></div>
-    <span class="arr">↗</span>
-  </a>
+  <section class="ed-intro">
+    <p class="ed-kicker">A Scroll Through Nevada</p>
+    <h2 class="ed-title">Seventeen photographs<br/>from the open desert.</h2>
+    <p class="ed-sub">Across Nevada, from the red sandstone of the south to the alpine peaks of the north.</p>
+  </section>
 
+  <!-- Film body rendered by JS below -->
+  <div id="ed-body"></div>
+
+  <!-- Outro -->
+  <section class="ed-outro">
+    <p class="ed-kicker">End of Reel</p>
+    <h3 class="ed-outro-title">The seventeen, in full.</h3>
+    <div class="ed-grid" id="ed-grid"></div>
+    <a class="ed-shop" href="https://proviewmedia.darkroom.com" target="_blank" rel="noopener">
+      Shop all prints
+      <span>→</span>
+    </a>
+  </section>
+
+</main>
+<!-- ═══ /EDITORIAL ═══ -->
+
+<!-- Footer (narrow) -->
+<div class="pg" style="padding-top:40px">
   <footer>
     <a href="index.html" class="faw">
       <div class="av" style="width:52px;height:52px"><img src="assets/melvin-headshot.jpg" alt="Melvin Morales" onerror="this.style.display='none'"/></div>
@@ -81,37 +444,175 @@
     <p class="fc">© 2026 Melvin Morales</p>
     <p class="fc" style="margin-top:4px">Website by <a href="https://www.proviewmediaco.com" target="_blank" style="color:var(--sub);text-decoration:underline;text-underline-offset:3px">Proview Media</a></p>
   </footer>
-
 </div>
+
 <script>
-// ── ADD YOUR PHOTOS HERE ─────────────────────────────
-const photos=[
-  {id:4,  title:"Valley of Fire",                  loc:"Valley of Fire State Park, NV",    src:"assets/gallery/valley-of-fire-full-view.jpg"},
-  {id:13, title:"Lake Tahoe",                       loc:"Nevada / California",              src:"assets/gallery/lake-tahoe-reno.jpg"},
-  {id:14, title:"Amargosa Big Dune",                loc:"Amargosa Valley, NV",              src:"assets/gallery/big-dune-sand-dunes.jpg"},
-  {id:12, title:"Lamoille Canyon",                  loc:"Ruby Mountains, NV",               src:"assets/gallery/lamoille-canyon.jpg"},
-  {id:7,  title:"Lake Mead",                       loc:"Lake Mead National Recreation Area, NV", src:"assets/gallery/lake-mead-main.jpg"},
-  {id:1,  title:"Red Rock Canyon",                loc:"Red Rock Canyon, NV",              src:"assets/gallery/red-rock-main.jpg"},
-  {id:17, title:"Wetlands",                         loc:"Henderson, NV",                    src:"assets/gallery/wetlands.jpg"},
-  {id:5,  title:"Valley of Fire Slot Canyon",       loc:"Valley of Fire State Park, NV",    src:"assets/gallery/valley-of-fire-slot-canyon.jpg"},
-  {id:10, title:"Great Basin National Park",        loc:"Baker, NV",                        src:"assets/gallery/great-basin-national-park.jpg"},
-  {id:8,  title:"Lake Mead National Recreation Area", loc:"Lake Mead, NV",                 src:"assets/gallery/lake-mead-national-recreational-area.jpg"},
-  {id:15, title:"Sand Mountain",                    loc:"Fallon, NV",                       src:"assets/gallery/sand-mountain.jpg"},
-  {id:11, title:"Cathedral Gorge",                  loc:"Panaca, NV",                       src:"assets/gallery/cathedral-rock.jpg"},
-  {id:6,  title:"Fire Wave",                       loc:"Valley of Fire State Park, NV",    src:"assets/gallery/fire-wave-valley-of-fire.jpg"},
-  {id:9,  title:"Spring Mountains",                loc:"Mt. Charleston, NV",               src:"assets/gallery/spring-mountain-recreational-area.jpg"},
-  {id:2,  title:"Red Rock Calico Basin",           loc:"Red Rock Canyon, NV",              src:"assets/gallery/red-rock-calico.jpg"},
-  {id:16, title:"Nevada Night Sky",                 loc:"Elko, NV",                         src:"assets/gallery/nevada-night-sky.jpg"},
-  {id:3,  title:"Red Rock Recreational Area",      loc:"Red Rock Canyon, NV",              src:"assets/gallery/red-rock-recreational-area.jpg"},
+/* ─────────────────────────────────────────────
+   THREE ACTS. VARIED LAYOUT RHYTHM PER ACT.
+   Layout types: "full" (1 photo), "duo" (2 photos), "asym-L"/"asym-R" (2:1 or 1:2), "prose" (text break)
+   ───────────────────────────────────────────── */
+const photoMap = {
+  1:  {id:1,  title:"Calico Basin",                      loc:"Red Rock Canyon, NV",              src:"assets/gallery/01-calico-basin.jpg"},
+  2:  {id:2,  title:"Amargosa Big Dune",                 loc:"Amargosa Valley, NV",              src:"assets/gallery/02-amargosa-big-dune.jpg"},
+  3:  {id:3,  title:"Red Rock Canyon",                   loc:"Red Rock Canyon, NV",              src:"assets/gallery/03-red-rock-canyon.jpg"},
+  4:  {id:4,  title:"Fire Wave",                         loc:"Valley of Fire State Park, NV",    src:"assets/gallery/04-fire-wave.jpg"},
+  5:  {id:5,  title:"Lake Mead",                         loc:"Lake Mead NRA, NV",                src:"assets/gallery/05-lake-mead.jpg"},
+  6:  {id:6,  title:"Slot Canyon",                       loc:"Valley of Fire State Park, NV",    src:"assets/gallery/06-slot-canyon.jpg"},
+  7:  {id:7,  title:"Cathedral Gorge",                   loc:"Panaca, NV",                       src:"assets/gallery/07-cathedral-gorge.jpg"},
+  8:  {id:8,  title:"Lake Tahoe",                        loc:"Nevada / California",              src:"assets/gallery/08-lake-tahoe.jpg"},
+  9:  {id:9,  title:"Lake Mead National Recreation Area",loc:"Lake Mead, NV / AZ",               src:"assets/gallery/09-lake-mead-nra.jpg"},
+  10: {id:10, title:"Lamoille Canyon",                   loc:"Ruby Mountains, NV",               src:"assets/gallery/10-lamoille-canyon.jpg"},
+  11: {id:11, title:"Sand Mountain",                     loc:"Fallon, NV",                       src:"assets/gallery/11-sand-mountain.jpg"},
+  12: {id:12, title:"Great Basin National Park",         loc:"Baker, NV",                        src:"assets/gallery/12-great-basin.jpg"},
+  13: {id:13, title:"Valley of Fire",                    loc:"Valley of Fire State Park, NV",    src:"assets/gallery/13-valley-of-fire.jpg"},
+  14: {id:14, title:"Wetlands",                          loc:"Henderson, NV",                    src:"assets/gallery/14-wetlands.jpg"},
+  15: {id:15, title:"Joshua Tree",                       loc:"Mt. Charleston, NV",               src:"assets/gallery/15-joshua-tree.jpg"},
+  16: {id:16, title:"Nevada Night Sky",                  loc:"Elko, NV",                         src:"assets/gallery/16-nevada-night-sky.jpg"},
+  17: {id:17, title:"Red Rock Recreational Area",        loc:"Red Rock Canyon, NV",              src:"assets/gallery/17-red-rock-recreational-area.jpg"}
+};
+
+// Save flat list for photo.html to navigate prev/next
+sessionStorage.setItem('photos', JSON.stringify(Object.values(photoMap).sort((a,b)=>a.id-b.id)));
+
+/* Orientation lookup (L = landscape 3:2, P = portrait 3:4 or 2:3) */
+const orient = {
+  1:'L', 3:'L', 5:'L', 7:'L', 10:'L', 12:'L', 14:'L', 16:'L', 17:'L',
+  2:'P', 4:'P', 6:'P', 8:'P', 9:'P', 11:'P', 13:'P', 15:'P'
+};
+
+/* Order per user's strip. Ten prose interstitials, a road-trip voice,
+   each one a traveler's note at the moment of discovering the next frame. */
+const sequence = [
+  {type:"photo", id:1},    // Calico Basin
+  {type:"prose", text:"Twenty minutes west of the Strip, the color begins. Calico Basin. The name promises many colors and the sandstone delivers, cream to coral to rust across a single face, changing with every shift of the sun."},
+  {type:"photo", id:2},    // Amargosa Big Dune
+  {type:"prose", text:"Red rock in the morning. By noon, sand. Big Dune rises out of nothing off the highway toward Death Valley. Five hundred feet of it, no warning, no companions. Nevada does not stay the thing you think it is."},
+  {type:"photo", id:3},    // Red Rock Canyon
+  {type:"prose", text:"Fifteen minutes from the Strip, a wall of stone rises two thousand feet out of the valley. Red Rock Canyon. One hundred and ninety five thousand acres, thirty miles of trail, petroglyphs older than the pyramids. Most of Las Vegas has never stopped to see it."},
+  {type:"photo", id:4},    // Fire Wave
+  {type:"prose", text:"Valley of Fire in the late afternoon, when the rock begins to glow from inside. The Fire Wave is a mile and a half on foot. No shade, no signs to speak of, no cell service. These stripes have been forming for two hundred million years. The rock does not care that we finally noticed."},
+  {type:"photo", id:5},    // Lake Mead
+  {type:"prose", text:"Half an hour east of the Strip, the desert opens onto a lake. The biggest reservoir in the country, held behind Hoover Dam, poured during the Depression and finished in 1936. One and a half million acres. Seven hundred and fifty miles of shoreline. The bathtub ring on the cliffs marks the drought in white, a little higher every year I come back. The water used to be up there."},
+  {type:"photo", id:6},    // Slot Canyon
+  {type:"prose", text:"A slot canyon narrows the world to the width of your shoulders and a strip of sky. The temperature drops ten degrees. Your footsteps echo off walls polished by a thousand floods. You come out the other side into a place that was not there when you went in."},
+  {type:"photo", id:7},    // Cathedral Gorge
+  {type:"prose", text:"Three hours north of Las Vegas, past ghost towns that still have names on the map, you reach Cathedral Gorge. Spires of bentonite clay, soft as chalk, carved by nothing but water and time. Nevada keeps making things that don't quite belong here."},
+  {type:"photo", id:8},    // Lake Tahoe
+  {type:"prose", text:"Four hundred miles north, an alpine lake the color of a postcard. Lake Tahoe. Sixteen hundred and forty five feet deep, half in Nevada and half in California. The water is cold enough to take your breath, clear enough to see seventy feet down."},
+  {type:"photo", id:9},    // Lake Mead NRA
+  {type:"photo", id:10},   // Lamoille Canyon
+  {type:"prose", text:"Up into the Ruby Mountains, where the air changes at eight thousand feet. The pines here are older than the country. The silence is older than the pines. The desert, it turns out, was only the first chapter."},
+  {type:"photo", id:11},   // Sand Mountain
+  {type:"prose", text:"Nevada is Spanish. It means snowy. The name belongs to the peaks you almost never see. Here is one."},
+  {type:"photo", id:12},   // Great Basin — THE PIVOT
+  {type:"prose", text:"After the mountain, more mountains. This is basin and range country. A ridge, then a valley, then another ridge, the earth pulled apart like an accordion, repeating all the way to the horizon. Nevada has more named mountain ranges than any other state in the country. Most of them, you and I will never know the name of."},
+  {type:"photo", id:13},   // Valley of Fire
+  {type:"photo", id:14},   // Wetlands
+  {type:"prose", text:"Ten minutes from the Strip, in a direction no tourist turns, a wetland I would not have believed was possible. Cattails. Frogs. Herons. A sky heavy with birds crossing from Canada to somewhere else. The city of three million is right there. The wetland is too."},
+  {type:"photo", id:15},   // Joshua Tree
+  {type:"prose", text:"The Joshua tree is not a tree. It is a yucca that grew tall. They grow only in the Mojave, and Nevada is covered in them, whole forests in places no one ever stops. Some of the ones standing here were alive before the first car crossed the state. You can tell where you are by their silhouette."},
+  {type:"photo", id:16},   // Nevada Night Sky
+  {type:"prose", text:"Outside of Elko, past the edge of any town, the sky comes back. The Milky Way shows up the way every person who ever lived once saw it, before we turned the lights on. Out here, it is not gone. It has only been waiting."},
+  {type:"photo", id:17},   // Red Rock Recreational Area
+  {type:"prose", text:"I drove across this state for years to find these places. I went for the wonder of it. I went for the beauty. I am still wrong about most of what I saw. What I know is this: Nevada rewards the slow. I hope these photographs do the same."}
 ];
-sessionStorage.setItem('photos',JSON.stringify(photos));
-const g=document.getElementById('grid');
-photos.forEach(p=>{
-  const a=document.createElement('a');
-  a.className='gi';a.href=`photo.html?id=${p.id}`;
-  a.innerHTML=`<img src="${p.src}" alt="${p.title}" loading="lazy" onerror="this.style.background='#222';this.style.minHeight='120px';this.removeAttribute('src')"/><div class="gc"><strong>${p.title}</strong><span>${p.loc}</span></div>`;
-  g.appendChild(a);
+
+/* ─────────────────────────────────────────────
+   BUILD BODY
+   ───────────────────────────────────────────── */
+const bodyEl = document.getElementById('ed-body');
+const totalN = Object.keys(photoMap).length;
+let seq = 0;
+
+function makePh(id, eager, fxClass, delayMs){
+  const p = photoMap[id];
+  seq++;
+  const n = String(seq).padStart(2,'0');
+  const tot = String(totalN).padStart(2,'0');
+  const delay = delayMs ? `style="--d:${delayMs}ms"` : '';
+  return `
+    <a class="ph ${fxClass}" href="photo.html?id=${p.id}" ${delay}>
+      <img class="ph-img" src="${p.src}" alt="${p.title} — ${p.loc}" loading="${eager?'eager':'lazy'}" decoding="async"/>
+    </a>
+    <div class="ph-cap">
+      <p class="ph-num">${n} / ${tot}</p>
+      <h3 class="ph-title">${p.title}</h3>
+      <p class="ph-loc">${p.loc}</p>
+      <a class="ph-cta-link" href="photo.html?id=${p.id}">View print →</a>
+    </div>
+  `;
+}
+
+/* 17 unique effects. Each photo (in scroll order) gets fx1..fx17 — one each. */
+let photoSeq = 0;
+
+function makePhotoRow(id, isFirst){
+  const rowOrient = orient[id] === 'L' ? 'land' : 'port';
+  const cls = `ed-row cols-1 ${rowOrient}`;
+  photoSeq++;
+  const fx = 'fx' + photoSeq;
+  const cards = makePh(id, isFirst, fx, 0);
+  return `<div class="${cls}">${cards}</div>`;
+}
+
+function makeProseBlock(text){
+  return `<div class="ed-prose"><p>${text}</p></div>`;
+}
+
+let firstPhoto = true;
+sequence.forEach(item=>{
+  if(item.type === 'photo'){
+    bodyEl.insertAdjacentHTML('beforeend', makePhotoRow(item.id, firstPhoto));
+    firstPhoto = false;
+  } else if(item.type === 'prose'){
+    bodyEl.insertAdjacentHTML('beforeend', makeProseBlock(item.text));
+  }
+});
+
+/* ─────────────────────────────────────────────
+   FOOTER GRID — ordered to match the scroll sequence
+   ───────────────────────────────────────────── */
+const grid = document.getElementById('ed-grid');
+const orderedIds = sequence.filter(item => item.type === 'photo').map(item => item.id);
+orderedIds.forEach(id => {
+  const p = photoMap[id];
+  const a = document.createElement('a');
+  a.href = `photo.html?id=${p.id}`;
+  a.innerHTML = `
+    <img src="${p.src}" alt="${p.title}" loading="lazy"/>
+    <div class="gc"><strong>${p.title}</strong><span>${p.loc}</span></div>
+  `;
+  grid.appendChild(a);
+});
+
+/* ─────────────────────────────────────────────
+   SCROLL ENTRANCE — fires LATE, as the image enters the viewport.
+   Combined with the 3.2s transition, the animation is still resolving
+   when the image reaches the middle of the viewport.
+   ───────────────────────────────────────────── */
+const obs = new IntersectionObserver((entries)=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting){
+      e.target.classList.add('in');
+      obs.unobserve(e.target);
+    }
+  });
+},{threshold:0.15, rootMargin:'0px 0px -12% 0px'});
+
+document.querySelectorAll('.ph, .ed-prose').forEach(el=>obs.observe(el));
+
+/* Failsafe: if an element is already above or at the top of the viewport on load
+   (anchor links, hard refresh with scroll), mark it visible immediately. */
+requestAnimationFrame(()=>{
+  document.querySelectorAll('.ph:not(.in), .ed-prose:not(.in)').forEach(el=>{
+    const rect = el.getBoundingClientRect();
+    if(rect.bottom < window.innerHeight * 0.5){
+      el.classList.add('in');
+      obs.unobserve(el);
+    }
+  });
 });
 </script>
+
 </body>
 </html>

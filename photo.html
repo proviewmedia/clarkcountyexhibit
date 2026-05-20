@@ -64,7 +64,7 @@
   </a>
   <div id="purchase-wrap" style="display:none;margin-top:12px">
     <a id="purchase-btn" href="#" target="_blank" style="display:block;text-align:center;background:var(--txt);color:#111;border-color:transparent;border-radius:var(--r);padding:16px 20px;transition:opacity .15s">
-      <span style="display:block;font-size:14px;font-weight:600;letter-spacing:-.2px">Purchase Gallery Framed Print — $125</span>
+      <span id="purchase-label" style="display:block;font-size:14px;font-weight:600;letter-spacing:-.2px">Purchase Gallery Framed Print — $125</span>
       <span style="display:block;font-size:11.5px;font-weight:400;opacity:0.6;margin-top:4px">High quality photographic print with wood frame, ready to display. Pickup only.</span>
     </a>
     <div style="margin-top:10px;padding:12px 14px;background:rgba(255,200,100,0.06);border:1px solid rgba(255,200,100,0.18);border-radius:var(--r);font-size:12px;line-height:1.6;color:var(--sub)">
@@ -122,6 +122,9 @@ const purchaseLinks={
   16:"https://buy.stripe.com/5kQaEQ5S61E9a8Dd683ZK00",  // Nevada Night Sky
   17:"https://buy.stripe.com/dRm00c4O2beJeoTaY03ZK0f"   // Red Rock Recreational Area
 };
+
+const prices={16:60, 17:60};
+const defaultPrice=125;
 
 const descriptions={
   1:{
@@ -268,6 +271,8 @@ if(d){
     purchaseBtn.removeAttribute('href');
   } else if(purchaseLinks[p.id]){
     purchaseBtn.href=purchaseLinks[p.id];
+    const price=prices[p.id]||defaultPrice;
+    document.getElementById('purchase-label').textContent=`Purchase Gallery Framed Print — $${price}`;
     purchaseWrap.style.display='block';
   }
 }

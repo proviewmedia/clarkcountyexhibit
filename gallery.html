@@ -382,66 +382,21 @@
   .ph-img,.ph:hover .ph-img{transition:none!important;transform:none!important}
 }
 /* ── COUNTDOWN GATE ── */
-body.cg-locked{overflow:hidden}
-#cg{position:fixed;inset:0;z-index:2000;background:var(--bg);display:flex;align-items:center;justify-content:center;padding:32px 20px;text-align:center}
+body.cg-locked #ed{display:none}
+#cg{display:none;padding:30px 20px 56px;text-align:center}
+body.cg-locked #cg{display:flex;align-items:center;justify-content:center}
 .cg-inner{max-width:520px;width:100%;display:flex;flex-direction:column;align-items:center}
-.cg-inner .brand{margin-bottom:26px}
 .cg-kicker{font-size:11px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);margin-bottom:10px}
 .cg-title{font-size:20px;font-weight:600;letter-spacing:-.3px;color:var(--txt);margin-bottom:30px}
 .cg-clock{display:flex;gap:10px;justify-content:center;margin-bottom:30px}
 .cg-unit{display:flex;flex-direction:column;align-items:center;background:var(--card);border:1px solid var(--border);border-radius:12px;padding:14px 0;min-width:70px}
 .cg-unit span{font-size:30px;font-weight:600;color:var(--txt);font-variant-numeric:tabular-nums;letter-spacing:.5px;line-height:1}
 .cg-unit label{font-size:10px;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-top:8px}
-.cg-sub{font-size:13.5px;line-height:1.7;color:var(--sub);max-width:420px;margin-bottom:26px}
-.cg-back{font-size:12.5px;color:var(--sub);text-decoration:none;transition:color .15s}
-.cg-back:hover{color:var(--txt)}
+.cg-sub{font-size:13.5px;line-height:1.7;color:var(--sub);max-width:420px}
 @media (max-width:420px){.cg-unit{min-width:62px;padding:12px 0}.cg-unit span{font-size:25px}.cg-clock{gap:7px}}
 </style>
 </head>
 <body class="cg-locked">
-
-<!-- ═══ COUNTDOWN GATE ═══ -->
-<div id="cg">
-  <div class="cg-inner">
-    <a class="brand" href="index.html"><span class="brand-vistas">VISTAS</span></a>
-    <p class="cg-kicker">The Gallery Opens</p>
-    <h2 class="cg-title">June 16, 2026 · 5:30 PM</h2>
-    <div class="cg-clock">
-      <div class="cg-unit"><span id="cg-d">00</span><label>Days</label></div>
-      <div class="cg-unit"><span id="cg-h">00</span><label>Hours</label></div>
-      <div class="cg-unit"><span id="cg-m">00</span><label>Minutes</label></div>
-      <div class="cg-unit"><span id="cg-s">00</span><label>Seconds</label></div>
-    </div>
-    <p class="cg-sub">The full collection from <em>Vistas: Beauty of the Desert</em> unlocks when the exhibit opens at the West Charleston Library Art Gallery.</p>
-    <a class="cg-back" href="index.html">&larr; Back to home</a>
-  </div>
-</div>
-<script>
-(function(){
-  var target=new Date('2026-06-16T17:30:00-07:00').getTime();
-  var gate=document.getElementById('cg');
-  function pad(n){return(n<10?'0':'')+n;}
-  function tick(){
-    var diff=target-Date.now();
-    if(diff<=0){
-      gate.style.display='none';
-      document.body.classList.remove('cg-locked');
-      clearInterval(timer);
-      return;
-    }
-    var d=Math.floor(diff/86400000);
-    var h=Math.floor(diff%86400000/3600000);
-    var m=Math.floor(diff%3600000/60000);
-    var s=Math.floor(diff%60000/1000);
-    document.getElementById('cg-d').textContent=pad(d);
-    document.getElementById('cg-h').textContent=pad(h);
-    document.getElementById('cg-m').textContent=pad(m);
-    document.getElementById('cg-s').textContent=pad(s);
-  }
-  tick();
-  var timer=setInterval(tick,1000);
-})();
-</script>
 
 <!-- Top bar (narrow container) -->
 <div class="pg" style="padding-bottom:0">
@@ -459,6 +414,45 @@ body.cg-locked{overflow:hidden}
     <a href="gallery.html" class="on">Gallery</a>
   </nav>
 </div>
+
+<!-- ═══ COUNTDOWN GATE ═══ -->
+<div id="cg">
+  <div class="cg-inner">
+    <p class="cg-kicker">The Gallery Opens</p>
+    <h2 class="cg-title">June 16, 2026 · 5:30 PM</h2>
+    <div class="cg-clock">
+      <div class="cg-unit"><span id="cg-d">00</span><label>Days</label></div>
+      <div class="cg-unit"><span id="cg-h">00</span><label>Hours</label></div>
+      <div class="cg-unit"><span id="cg-m">00</span><label>Minutes</label></div>
+      <div class="cg-unit"><span id="cg-s">00</span><label>Seconds</label></div>
+    </div>
+    <p class="cg-sub">The full collection from <em>Vistas: Beauty of the Desert</em> unlocks when the exhibit opens at the West Charleston Library Art Gallery.</p>
+  </div>
+</div>
+<script>
+(function(){
+  var target=new Date('2026-06-16T17:30:00-07:00').getTime();
+  function pad(n){return(n<10?'0':'')+n;}
+  function tick(){
+    var diff=target-Date.now();
+    if(diff<=0){
+      document.body.classList.remove('cg-locked');
+      clearInterval(timer);
+      return;
+    }
+    var d=Math.floor(diff/86400000);
+    var h=Math.floor(diff%86400000/3600000);
+    var m=Math.floor(diff%3600000/60000);
+    var s=Math.floor(diff%60000/1000);
+    document.getElementById('cg-d').textContent=pad(d);
+    document.getElementById('cg-h').textContent=pad(h);
+    document.getElementById('cg-m').textContent=pad(m);
+    document.getElementById('cg-s').textContent=pad(s);
+  }
+  tick();
+  var timer=setInterval(tick,1000);
+})();
+</script>
 
 <!-- ═══ EDITORIAL GALLERY ═══ -->
 <main class="ed" id="ed">

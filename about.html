@@ -37,6 +37,15 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet"/>
 <link rel="stylesheet" href="styles.css"/>
+<style>
+.about-field{display:grid;grid-template-columns:1.5fr 1fr;gap:10px;margin:22px 0 6px}
+.about-field img{width:100%;height:320px;object-fit:cover;border-radius:12px;display:block;border:1px solid var(--border)}
+.about-field-cap{font-size:12px;color:var(--muted);text-align:center;margin-top:8px}
+@media(max-width:520px){
+  .about-field{grid-template-columns:1fr}
+  .about-field img{height:auto}
+}
+</style>
 </head>
 <body>
 <div class="pg">
@@ -75,6 +84,13 @@
     <p>My intention is to bring these landscapes closer to those who encounter my work. I aim to reduce the sense of separation between viewers and location. The photographs are meant to be observed as points of connection and reminders that these environments exist within reach. I hope to inspire my audience to experience Nevada beyond the frame.</p>
     <h2>Medium and Process</h2>
     <p>Landscape photography captured using digital cameras and drones; printed on high quality glossy photographic paper.</p>
+    <div class="about-field">
+      <img src="assets/about-roadside.jpg" alt="Melvin Morales photographing the Nevada landscape along a desert highway"
+        onerror="this.parentElement.style.display='none'"/>
+      <img src="assets/about-canyon.jpg" alt="Melvin Morales at Cathedral Gorge State Park, Nevada"
+        onerror="this.parentElement.style.display='none'"/>
+    </div>
+    <p class="about-field-cap">In the field across Nevada</p>
     <h2>Get in Touch</h2>
     <p>For inquiries about prints, exhibitions, or collaborations, feel free to reach out.</p>
   </div>

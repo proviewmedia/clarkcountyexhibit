@@ -61,24 +61,21 @@
     <a href="shop.html" class="on">Shop</a>
   </nav>
 
-  <!-- FULL COLLECTION (DARKROOM) -->
-  <p class="lbl">Full Collection</p>
-
-  <a class="ic" href="https://proviewmedia.darkroom.com" target="_blank" rel="noopener" style="border-color:rgba(255,255,255,0.15)">
-    <img class="cimg" src="assets/shop-prints.jpg" alt="Nevada landscape fine-art print" onerror="this.style.display='none'"/>
-    <div class="ci">
-      <p class="ey">Open to everyone · Ships worldwide</p>
-      <p class="ct">Shop the Full Collection</p>
-      <p class="cs" style="margin-top:6px">Browse every print, size, and format in the online store.<br/>proviewmedia.darkroom.com</p>
-      <span class="tag" style="margin-top:12px">Shop on Darkroom ↗</span>
+  <!-- BUY ONLINE (DARKROOM) -->
+  <p class="lbl">Buy Online · Delivered</p>
+  <a class="rc" href="https://proviewmedia.darkroom.com" target="_blank" rel="noopener">
+    <div class="ico">
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="rgba(240,237,232,.5)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
     </div>
+    <div class="rt"><strong>Shop the Full Collection</strong><span>Ordered online, shipped to your door · proviewmedia.darkroom.com</span></div>
+    <span class="arr">↗</span>
   </a>
 
   <hr class="div"/>
 
-  <!-- EXHIBIT PRINTS -->
-  <p class="lbl">Prints from the Exhibit</p>
-  <p class="shop-note">These are the photographs on display at the West Charleston Library exhibit. Each is available as a framed gallery print — tap any piece to view details and purchase.</p>
+  <!-- PRINTS AT THE GALLERY -->
+  <p class="lbl">Prints at the Gallery · Pickup</p>
+  <p class="shop-note">Every photograph on display at the West Charleston Library is available as a framed gallery print — purchased directly and picked up at the exhibit. Choose a piece below to purchase.</p>
 
   <div class="shop-grid" id="shop-grid"></div>
 
@@ -120,13 +117,38 @@ const photos=[
   {id:16, title:"Nevada Night Sky",                   loc:"Elko, NV",                               src:"assets/gallery/16-nevada-night-sky.jpg"},
   {id:17, title:"Red Rock Recreational Area",         loc:"Red Rock Canyon, NV",                    src:"assets/gallery/17-red-rock-recreational-area.jpg"},
 ];
-try{sessionStorage.setItem('photos',JSON.stringify(photos))}catch(e){}
+// Direct Stripe checkout link per image (keep in sync with photo.html purchaseLinks)
+const purchaseLinks={
+  1:"https://buy.stripe.com/8x2eV62FUciNgx16HK3ZK0c",   // Calico Basin
+  2:"https://buy.stripe.com/00w4gsa8m1E93Kfeac3ZK04",   // Amargosa Big Dune
+  3:"https://buy.stripe.com/3cI5kweoC3MhcgL1nq3ZK0g",   // Red Rock Canyon
+  4:"https://buy.stripe.com/6oU7sE6WafuZ2Gb9TW3ZK0d",   // Fire Wave
+  5:"https://buy.stripe.com/14A28kcgudmRbcH1nq3ZK0a",   // Lake Mead
+  6:"https://buy.stripe.com/5kQ00c3JYaaFgx1feg3ZK0e",   // Slot Canyon
+  7:"https://buy.stripe.com/14AdR2fsG96B94zd683ZK05",   // Cathedral Gorge
+  8:"https://buy.stripe.com/4gM9AMcgu82xgx11nq3ZK01",   // Lake Tahoe
+  9:"https://buy.stripe.com/cNifZagwK4QlcgL7LO3ZK08",   // Lake Mead NRA
+  10:"https://buy.stripe.com/28EeV680e3Mh94zaY03ZK09",  // Lamoille Canyon
+  11:"https://buy.stripe.com/aFacMYcgudmRa8D7LO3ZK07",  // Sand Mountain
+  12:"https://buy.stripe.com/dRm4gs0xMaaFeoT0jm3ZK06",  // Great Basin National Park
+  13:"https://buy.stripe.com/fZu6oAa8m96Bgx1gik3ZK0b",  // Valley of Fire
+  14:"https://buy.stripe.com/8x24gs80e0A5dkP1nq3ZK03",  // Wetlands
+  15:"https://buy.stripe.com/28EbIU1BQ96Ba8D8PS3ZK02",  // Joshua Tree
+  16:"https://buy.stripe.com/dRmdR2fsG4Ql80v8PS3ZK0h",  // Nevada Night Sky
+  17:"https://buy.stripe.com/00w5kw94iciN80vaY03ZK0i"   // Red Rock Recreational Area
+};
+const prices={16:60, 17:60};
+const defaultPrice=125;
 const grid=document.getElementById('shop-grid');
 photos.forEach(p=>{
+  const link=purchaseLinks[p.id];
+  const price=prices[p.id]||defaultPrice;
   const a=document.createElement('a');
   a.className='gi';
-  a.href=`photo.html?id=${p.id}`;
-  a.innerHTML=`<img src="${p.src}" alt="${p.title} — ${p.loc}" loading="lazy" onerror="this.style.background='#222';this.style.minHeight='110px';this.removeAttribute('src')"/><div class="gc"><strong>${p.title}</strong><span>Purchase →</span></div>`;
+  a.href=link;
+  a.target='_blank';
+  a.rel='noopener';
+  a.innerHTML=`<img src="${p.src}" alt="${p.title} — ${p.loc}" loading="lazy" onerror="this.style.background='#222';this.style.minHeight='110px';this.removeAttribute('src')"/><div class="gc"><strong>${p.title}</strong><span>Purchase from the gallery — $${price} →</span></div>`;
   grid.appendChild(a);
 });
 </script>

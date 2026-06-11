@@ -180,7 +180,8 @@ footer .fc{font-size:11px;color:var(--muted)}
 
   /* About page grids */
   .about-hero-content { display: grid; grid-template-columns: 1fr 1.2fr; gap: 24px; align-items: start; }
-  .about-hero-content .ic { position: sticky; top: 24px; margin-bottom: 0; }
+  .about-hero-content .about-left { position: sticky; top: 24px; }
+  .about-hero-content .about-left .ic { margin-bottom: 0; }
   .about-contact { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; align-items: stretch; }
 
   /* Photo page layout */

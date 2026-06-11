@@ -38,9 +38,9 @@
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet"/>
 <link rel="stylesheet" href="styles.css"/>
 <style>
-.about-field{max-width:380px;margin:22px 0 6px;margin-right:auto}
-.about-field img{width:100%;height:auto;border-radius:12px;display:block;border:1px solid var(--border)}
-.about-field-cap{font-size:12px;color:var(--muted);text-align:left;max-width:380px;margin-top:8px}
+.about-field{margin-top:12px}
+.about-field img{width:100%;height:auto;border-radius:14px;display:block;border:1px solid var(--border)}
+.about-field-cap{font-size:12px;color:var(--muted);text-align:left;margin-top:8px}
 </style>
 </head>
 <body>
@@ -62,9 +62,16 @@
   </nav>
 
   <div class="about-hero-content">
-  <div class="ic">
-    <img class="cimg" src="assets/melvin-headshot.jpg" alt="Melvin Morales" style="aspect-ratio:16/10;object-position:top"
-      onerror="this.style.background='#222';this.style.minHeight='200px';this.removeAttribute('src')"/>
+  <div class="about-left">
+    <div class="ic">
+      <img class="cimg" src="assets/melvin-headshot.jpg" alt="Melvin Morales" style="aspect-ratio:16/10;object-position:top"
+        onerror="this.style.background='#222';this.style.minHeight='200px';this.removeAttribute('src')"/>
+    </div>
+    <div class="about-field">
+      <img src="assets/about-roadside.jpg" alt="Melvin Morales photographing the Nevada landscape along a desert highway"
+        onerror="this.parentElement.style.display='none'"/>
+      <p class="about-field-cap">In the field across Nevada</p>
+    </div>
   </div>
 
   <div class="prose">
@@ -80,11 +87,6 @@
     <p>My intention is to bring these landscapes closer to those who encounter my work. I aim to reduce the sense of separation between viewers and location. The photographs are meant to be observed as points of connection and reminders that these environments exist within reach. I hope to inspire my audience to experience Nevada beyond the frame.</p>
     <h2>Medium and Process</h2>
     <p>Landscape photography captured using digital cameras and drones; printed on high quality glossy photographic paper.</p>
-    <div class="about-field">
-      <img src="assets/about-roadside.jpg" alt="Melvin Morales photographing the Nevada landscape along a desert highway"
-        onerror="this.parentElement.style.display='none'"/>
-    </div>
-    <p class="about-field-cap">In the field across Nevada</p>
     <h2>Get in Touch</h2>
     <p>For inquiries about prints, exhibitions, or collaborations, feel free to reach out.</p>
   </div>

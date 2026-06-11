@@ -461,6 +461,7 @@ body.cg-locked #cg{display:flex;align-items:center;justify-content:center}
     <p class="ed-kicker">A Scroll Through Nevada</p>
     <h2 class="ed-title">Seventeen photographs<br/>from the open desert.</h2>
     <p class="ed-sub">Across Nevada, from the red sandstone of the south to the alpine peaks of the north.</p>
+    <p class="ed-sub" style="margin-top:16px">Every photograph on display is available to purchase as a framed gallery print — tap any image to buy the exact piece on the wall. You can also browse the full print collection at <a href="https://proviewmedia.darkroom.com" target="_blank" rel="noopener" style="color:#f0ede8;text-decoration:underline;text-underline-offset:3px">proviewmedia.darkroom.com</a>.</p>
   </section>
 
   <!-- Film body rendered by JS below -->
@@ -471,8 +472,9 @@ body.cg-locked #cg{display:flex;align-items:center;justify-content:center}
     <p class="ed-kicker">End of Reel</p>
     <h3 class="ed-outro-title">The seventeen, in full.</h3>
     <div class="ed-grid" id="ed-grid"></div>
+    <p class="ed-sub" style="margin:0 auto 22px;max-width:480px">Tap any photograph to purchase its framed gallery print, or browse the full collection below.</p>
     <a class="ed-shop" href="https://proviewmedia.darkroom.com" target="_blank" rel="noopener">
-      Shop all prints
+      Shop the full collection
       <span>→</span>
     </a>
   </section>
@@ -589,7 +591,7 @@ function makePh(id, eager, fxClass, delayMs){
       <p class="ph-num">${n} / ${tot}</p>
       <h3 class="ph-title">${p.title}</h3>
       <p class="ph-loc">${p.loc}</p>
-      <a class="ph-cta-link" href="photo.html?id=${p.id}">View print →</a>
+      <a class="ph-cta-link" href="photo.html?id=${p.id}">View &amp; purchase print →</a>
     </div>
   `;
 }

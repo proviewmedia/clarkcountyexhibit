@@ -27,7 +27,7 @@ body{
 }
 a{color:inherit;text-decoration:none}
 button{font-family:inherit;cursor:pointer}
-img{display:block}
+img{display:block;-webkit-user-drag:none;-khtml-user-drag:none;-moz-user-drag:none;user-drag:none;-webkit-user-select:none;user-select:none;-webkit-touch-callout:none}
 
 /* ── PAGE ── */
 .pg{max-width:var(--w);margin:0 auto;padding:0 16px 40px}

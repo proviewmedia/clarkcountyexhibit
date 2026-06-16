@@ -40,10 +40,15 @@
 @media(min-width:1024px){.shop-grid{gap:12px}}
 .shop-grid .gi .gc span{color:var(--sub)}
 .shop-note{font-size:13px;color:var(--sub);line-height:1.7;margin:-4px 0 16px}
+#shop-locked{background:var(--card);border:1px solid var(--border);border-radius:var(--r);padding:20px 16px;text-align:center}
+#shop-locked .sl-title{font-size:15px;font-weight:600;color:var(--txt)}
+#shop-locked .sl-sub{font-size:13px;color:var(--sub);line-height:1.7;margin-top:6px}
+body.cg-locked #gallery-prints{display:none}
+body:not(.cg-locked) #shop-locked{display:none}
 </style>
 <script defer src="protect.js"></script>
 </head>
-<body>
+<body class="cg-locked">
 <div class="pg">
 
   <div class="hero">
@@ -76,9 +81,16 @@
 
   <!-- PRINTS AT THE GALLERY -->
   <p class="lbl">Prints at the Gallery · Pickup</p>
-  <p class="shop-note">Every photograph on display at the West Charleston Library is available as a framed gallery print — purchased directly and picked up at the exhibit. Choose a piece below to purchase.</p>
 
-  <div class="shop-grid" id="shop-grid"></div>
+  <div id="shop-locked">
+    <p class="sl-title">The exhibit prints unlock at the opening</p>
+    <p class="sl-sub">The framed gallery prints become available to purchase when the gallery opens — <strong style="color:var(--txt)">June 16, 2026 · 5:30 PM</strong>.</p>
+  </div>
+
+  <div id="gallery-prints">
+    <p class="shop-note">Every photograph on display at the West Charleston Library is available as a framed gallery print — purchased directly and picked up at the exhibit. Choose a piece below to purchase.</p>
+    <div class="shop-grid" id="shop-grid"></div>
+  </div>
 
   <hr class="div"/>
 
@@ -141,17 +153,26 @@ const purchaseLinks={
 const prices={16:60, 17:60};
 const defaultPrice=125;
 const grid=document.getElementById('shop-grid');
-photos.forEach(p=>{
-  const link=purchaseLinks[p.id];
-  const price=prices[p.id]||defaultPrice;
-  const a=document.createElement('a');
-  a.className='gi';
-  a.href=link;
-  a.target='_blank';
-  a.rel='noopener';
-  a.innerHTML=`<img src="${p.src}" alt="${p.title} — ${p.loc}" loading="lazy" onerror="this.style.background='#222';this.style.minHeight='110px';this.removeAttribute('src')"/><div class="gc"><strong>${p.title}</strong><span>Purchase from the gallery — $${price} →</span></div>`;
-  grid.appendChild(a);
-});
+function renderGrid(){
+  if(grid.childElementCount) return;
+  photos.forEach(p=>{
+    const link=purchaseLinks[p.id];
+    const price=prices[p.id]||defaultPrice;
+    const a=document.createElement('a');
+    a.className='gi';
+    a.href=link;
+    a.target='_blank';
+    a.rel='noopener';
+    a.innerHTML=`<img src="${p.src}" alt="${p.title} — ${p.loc}" loading="lazy" onerror="this.style.background='#222';this.style.minHeight='110px';this.removeAttribute('src')"/><div class="gc"><strong>${p.title}</strong><span>Purchase from the gallery — $${price} →</span></div>`;
+    grid.appendChild(a);
+  });
+}
+
+// Gate the exhibit prints behind the gallery opening (Jun 16, 2026 5:30 PM PDT)
+const unlockTarget=new Date('2026-06-16T17:30:00-07:00').getTime();
+function unlock(){document.body.classList.remove('cg-locked');renderGrid();}
+if(Date.now()>=unlockTarget){unlock();}
+else{const ut=setInterval(function(){if(Date.now()>=unlockTarget){unlock();clearInterval(ut);}},1000);}
 </script>
 </body>
 </html>

@@ -45,6 +45,8 @@
 #shop-locked .sl-sub{font-size:13px;color:var(--sub);line-height:1.7;margin-top:6px}
 body.cg-locked #gallery-prints{display:none}
 body:not(.cg-locked) #shop-locked{display:none}
+.gi.sold{opacity:.5;cursor:default}
+.gi.sold .gc span{color:var(--muted);text-transform:uppercase;letter-spacing:.08em;font-weight:600}
 </style>
 <script defer src="protect.js"></script>
 </head>
@@ -110,6 +112,7 @@ body:not(.cg-locked) #shop-locked{display:none}
   </footer>
 
 </div>
+<script src="sold.js"></script>
 <script>
 const photos=[
   {id:1,  title:"Calico Basin",                       loc:"Red Rock Canyon, NV",                    src:"assets/gallery/01-calico-basin.jpg"},
@@ -158,12 +161,21 @@ function renderGrid(){
   photos.forEach(p=>{
     const link=purchaseLinks[p.id];
     const price=prices[p.id]||defaultPrice;
+    const isSold=(window.SOLD||[]).includes(p.id);
+    const img=`<img src="${p.src}" alt="${p.title} — ${p.loc}" loading="lazy" onerror="this.style.background='#222';this.style.minHeight='110px';this.removeAttribute('src')"/>`;
+    if(isSold){
+      const d=document.createElement('div');
+      d.className='gi sold';
+      d.innerHTML=`${img}<div class="gc"><strong>${p.title}</strong><span>Sold</span></div>`;
+      grid.appendChild(d);
+      return;
+    }
     const a=document.createElement('a');
     a.className='gi';
     a.href=link;
     a.target='_blank';
     a.rel='noopener';
-    a.innerHTML=`<img src="${p.src}" alt="${p.title} — ${p.loc}" loading="lazy" onerror="this.style.background='#222';this.style.minHeight='110px';this.removeAttribute('src')"/><div class="gc"><strong>${p.title}</strong><span>Purchase from the gallery — $${price} →</span></div>`;
+    a.innerHTML=`${img}<div class="gc"><strong>${p.title}</strong><span>Purchase from the gallery — $${price} →</span></div>`;
     grid.appendChild(a);
   });
 }

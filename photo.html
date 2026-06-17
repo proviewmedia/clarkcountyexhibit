@@ -100,9 +100,9 @@
     <p class="fc" style="margin-top:4px">Website by <a href="https://www.proviewmediaco.com" target="_blank" style="color:var(--sub);text-decoration:underline;text-underline-offset:3px">Proview Media</a></p>
   </footer>
 </div>
+<script src="sold.js"></script>
 <script>
-// Add photo IDs here when sold (e.g. [4, 13] means Valley of Fire and Lake Tahoe are sold)
-const sold=[];
+const sold=(window.SOLD||[]);
 
 const purchaseLinks={
   1:"https://buy.stripe.com/8x2eV62FUciNgx16HK3ZK0c",   // Calico Basin

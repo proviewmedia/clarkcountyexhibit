@@ -376,6 +376,9 @@
 }
 .ed-shop:hover{background:#f0ede8;color:#000;border-color:#f0ede8}
 .ed-cta{max-width:520px;margin:32px auto 0;font-family:'Inter',-apple-system,sans-serif;text-align:left}
+.ph-cta-link.sold{opacity:.55;pointer-events:none;text-transform:uppercase;letter-spacing:.12em}
+.ed-grid .sold{display:block;border-radius:10px;overflow:hidden;background:#1c1c1c;border:1px solid rgba(255,255,255,0.06);opacity:.5;cursor:default}
+.ed-grid .sold .gc span{color:rgba(240,237,232,.62);text-transform:uppercase;letter-spacing:.12em}
 
 /* Reduced motion */
 @media (prefers-reduced-motion:reduce){
@@ -516,6 +519,7 @@ body.cg-locked #cg{display:flex;align-items:center;justify-content:center}
   </footer>
 </div>
 
+<script src="sold.js"></script>
 <script>
 /* ─────────────────────────────────────────────
    THREE ACTS. VARIED LAYOUT RHYTHM PER ACT.
@@ -600,15 +604,21 @@ function makePh(id, eager, fxClass, delayMs){
   const n = String(seq).padStart(2,'0');
   const tot = String(totalN).padStart(2,'0');
   const delay = delayMs ? `style="--d:${delayMs}ms"` : '';
+  const isSold = (window.SOLD||[]).includes(p.id);
+  const imgEl = `<img class="ph-img" src="${p.src}" alt="${p.title} — ${p.loc}" loading="${eager?'eager':'lazy'}" decoding="async"/>`;
+  const tile = isSold
+    ? `<div class="ph ${fxClass}" ${delay}>${imgEl}</div>`
+    : `<a class="ph ${fxClass}" href="photo.html?id=${p.id}" ${delay}>${imgEl}</a>`;
+  const cta = isSold
+    ? `<span class="ph-cta-link sold">Sold</span>`
+    : `<a class="ph-cta-link" href="photo.html?id=${p.id}">View &amp; purchase print →</a>`;
   return `
-    <a class="ph ${fxClass}" href="photo.html?id=${p.id}" ${delay}>
-      <img class="ph-img" src="${p.src}" alt="${p.title} — ${p.loc}" loading="${eager?'eager':'lazy'}" decoding="async"/>
-    </a>
+    ${tile}
     <div class="ph-cap">
       <p class="ph-num">${n} / ${tot}</p>
       <h3 class="ph-title">${p.title}</h3>
       <p class="ph-loc">${p.loc}</p>
-      <a class="ph-cta-link" href="photo.html?id=${p.id}">View &amp; purchase print →</a>
+      ${cta}
     </div>
   `;
 }
@@ -646,13 +656,16 @@ const grid = document.getElementById('ed-grid');
 const orderedIds = sequence.filter(item => item.type === 'photo').map(item => item.id);
 orderedIds.forEach(id => {
   const p = photoMap[id];
-  const a = document.createElement('a');
-  a.href = `photo.html?id=${p.id}`;
-  a.innerHTML = `
+  const isSold = (window.SOLD||[]).includes(p.id);
+  const inner = `
     <img src="${p.src}" alt="${p.title}" loading="lazy"/>
-    <div class="gc"><strong>${p.title}</strong><span>${p.loc}</span></div>
+    <div class="gc"><strong>${p.title}</strong><span>${isSold ? 'Sold' : p.loc}</span></div>
   `;
-  grid.appendChild(a);
+  const el = document.createElement(isSold ? 'div' : 'a');
+  if(isSold){ el.className = 'sold'; }
+  else { el.href = `photo.html?id=${p.id}`; }
+  el.innerHTML = inner;
+  grid.appendChild(el);
 });
 
 /* ─────────────────────────────────────────────

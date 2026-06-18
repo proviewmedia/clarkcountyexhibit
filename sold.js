@@ -1,5 +1,6 @@
-// Sold prints — single source of truth.
-// Add a photo id here when its framed gallery print sells, then commit/push.
+// Sold prints. Auto-synced from Stripe every hour by .github/workflows/sync-sold.yml
+// (a print is "sold" when its Stripe payment link is closed). Manual edits here are
+// fine but get reconciled to Stripe on the next run.
 // Ids: 1 Calico Basin, 2 Amargosa Big Dune, 3 Red Rock Canyon, 4 Fire Wave,
 // 5 Lake Mead, 6 Slot Canyon, 7 Cathedral Gorge, 8 Lake Tahoe, 9 Lake Mead NRA,
 // 10 Lamoille Canyon, 11 Sand Mountain, 12 Great Basin, 13 Valley of Fire,

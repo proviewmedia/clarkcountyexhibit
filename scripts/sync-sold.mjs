@@ -7,7 +7,11 @@ import { fileURLToPath } from 'node:url';
 import { dirname, join } from 'node:path';
 
 const KEY = process.env.STRIPE_API_KEY;
-if (!KEY) { console.error('Missing STRIPE_API_KEY'); process.exit(1); }
+if (!KEY) {
+  // Not configured yet — skip quietly so the scheduled job doesn't fail/email.
+  console.log('STRIPE_API_KEY not set — skipping sync. Add the repo secret to enable.');
+  process.exit(0);
+}
 
 // Stripe payment-link URL -> photo id (must match photo.html purchaseLinks)
 const URL_TO_ID = {
